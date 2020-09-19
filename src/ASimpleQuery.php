@@ -782,10 +782,7 @@ abstract class ASimpleQuery implements ISimpleQuery
         if (!count($contexts)) {
             $contexts = [$this->getDomDocument()->documentElement];
         }
-        $xpath = substr($this->compile($selector), 18);
-        $xpath = 'descendant' . $xpath;
-
-        $lists = $this->contextQueryXPath($xpath, $contexts);
+        $lists = $this->contextQueryXPath(CompileSelector::compile($selector, false, true), $contexts);
 
         return $this->factory($this, $lists, $this->getFragments());
     }

@@ -608,6 +608,43 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
+     * Провайдер данных для теста testInvokeSelectors
+     *
+     * @return mixed[]
+     */
+    public function dataProviderInvokeSelectors(): array
+    {
+        return [
+            [
+                '*',
+                39,
+            ],
+            [
+                'head *',
+                3,
+            ],
+            [
+                'footer > *',
+                2,
+            ],
+        ];
+    }
+
+    /**
+     * Селекторы
+     *
+     * @param string $selector
+     * @param int    $count
+     *
+     * @dataProvider dataProviderInvokeSelectors
+     */
+    public function testInvokeSelectors(string $selector, int $count): void
+    {
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $this->assertCount($count, $sq($selector));
+    }
+
+    /**
      * Добавляет элементы в текущий контекст
      */
     public function testAdd(): void

@@ -66,10 +66,10 @@ class CompileSelector implements ICompileSelector
     /**
      * @return mixed
      */
-    private static function callCompiler(Token $token, Tokenizer $tokenizer, bool $filter)
+    private static function callCompiler(Token $token, Tokenizer $tokenizer, bool $filter, bool $find)
     {
         foreach (static::$compilers as $compiler) {
-            if (($result = call_user_func($compiler, $token, $tokenizer, $filter)) !== self::COMPILER_NEXT) {
+            if (($result = call_user_func($compiler, $token, $tokenizer, $filter, $find)) !== self::COMPILER_NEXT) {
                 return $result;
             }
         }
@@ -80,12 +80,12 @@ class CompileSelector implements ICompileSelector
     /**
      * @inheritDoc
      */
-    public static function compile(string $selector, bool $filter = false)
+    public static function compile(string $selector, bool $filter = false, bool $find = false)
     {
         $tokenizer = new Tokenizer($selector);
         $xpath = '';
         while (($token = $tokenizer->next()) !== ITokenizer::T_EOF) {
-            $result = static::callCompiler($token, $tokenizer, $filter);
+            $result = static::callCompiler($token, $tokenizer, $filter, $find);
             if ($result === self::COMPILER_ERROR) {
                 return $result;
             }
@@ -104,13 +104,14 @@ class CompileSelector implements ICompileSelector
      *
      * @return bool|string
      */
-    protected static function compileTag(Token $token, Tokenizer $tokenizer, bool $filter)
+    protected static function compileTag(Token $token, Tokenizer $tokenizer, bool $filter, bool $find)
     {
         if ($token->getType() !== Token::T_TAG) {
             return self::COMPILER_NEXT;
         }
         $prevType = $tokenizer->lookAtPrevType(2);
-        $xpath = ($tokenizer->getIndex() > 0 ? '/' : '') . static::descendant($prevType, $filter)
+        $xpath = ($tokenizer->getIndex() > 0 ? '/' : '')
+            . static::descendant($prevType, $filter, $find, $token)
             . $token->getImage();
         if ($prevType === Token::T_SIBLING_NEXT) {
             $xpath .= '[1]';
@@ -134,7 +135,7 @@ class CompileSelector implements ICompileSelector
     /**
      * Определяет XPath селектор элемента
      */
-    protected static function descendant(int $type, bool $filter): string
+    protected static function descendant(int $type, bool $filter, bool $find, Token $token): string
     {
         if (
             $type === Token::T_SIBLING_NEXT
@@ -143,7 +144,17 @@ class CompileSelector implements ICompileSelector
             return 'following-sibling::';
         }
         if ($type !== Token::T_DIRECT_CHILD) {
-            return $filter ? 'self::' : 'descendant-or-self::';
+            if ('*' == $token->getImage() && $type > 0) {
+                return 'descendant::';
+            }
+
+            if ($filter) {
+                return 'self::';
+            } elseif ($find) {
+                return 'descendant::';
+            }
+
+            return 'descendant-or-self::';
         }
 
         return '';
@@ -158,7 +169,7 @@ class CompileSelector implements ICompileSelector
      *
      * @return bool|string
      */
-    protected static function compileId(Token $token, Tokenizer $tokenizer, bool $filter)
+    protected static function compileId(Token $token, Tokenizer $tokenizer, bool $filter, bool $find)
     {
         if ($token->getType() !== Token::T_ID) {
             return self::COMPILER_NEXT;
@@ -204,7 +215,7 @@ class CompileSelector implements ICompileSelector
      *
      * @return bool|string
      */
-    protected static function compileClass(Token $token, Tokenizer $tokenizer, bool $filter)
+    protected static function compileClass(Token $token, Tokenizer $tokenizer, bool $filter, bool $find)
     {
         if ($token->getType() !== Token::T_CLASS) {
             return self::COMPILER_NEXT;
@@ -234,7 +245,7 @@ class CompileSelector implements ICompileSelector
      *
      * @return bool|string
      */
-    protected static function compileWhitespace(Token $token, Tokenizer $tokenizer, bool $filter)
+    protected static function compileWhitespace(Token $token, Tokenizer $tokenizer, bool $filter, bool $find)
     {
         if ($token->getType() !== Token::T_WHITE_SPACE) {
             return self::COMPILER_NEXT;
@@ -248,7 +259,7 @@ class CompileSelector implements ICompileSelector
      *
      * @return bool|string
      */
-    protected static function compileAttribute(Token $token, Tokenizer $tokenizer, bool $filter)
+    protected static function compileAttribute(Token $token, Tokenizer $tokenizer, bool $filter, bool $find)
     {
         if ($token->getType() !== Token::T_OPEN_ATTRIBUTE) {
             return self::COMPILER_NEXT;
@@ -335,7 +346,7 @@ class CompileSelector implements ICompileSelector
      *
      * @return bool|string
      */
-    protected static function compilePseudo(Token $token, Tokenizer $tokenizer, bool $filter)
+    protected static function compilePseudo(Token $token, Tokenizer $tokenizer, bool $filter, bool $find)
     {
         if ($token->getType() !== Token::T_PSEUDO) {
             return self::COMPILER_NEXT;
@@ -412,7 +423,7 @@ class CompileSelector implements ICompileSelector
      *
      * @return bool|string
      */
-    protected static function compileMultiple(Token $token, Tokenizer $tokenizer, bool $filter)
+    protected static function compileMultiple(Token $token, Tokenizer $tokenizer, bool $filter, bool $find)
     {
         if ($token->getType() !== Token::T_MULTIPLE_SELECTOR) {
             return self::COMPILER_NEXT;
