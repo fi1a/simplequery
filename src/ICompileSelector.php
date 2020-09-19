@@ -14,5 +14,5 @@ interface ICompileSelector
      *
      * @return string|bool
      */
-    public static function compile(string $selector, bool $filter = false);
+    public static function compile(string $selector, bool $filter = false, bool $find = false);
 }

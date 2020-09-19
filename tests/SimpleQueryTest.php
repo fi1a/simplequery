@@ -627,6 +627,26 @@ class SimpleQueryTest extends TestCase
                 'footer > *',
                 2,
             ],
+            [
+                '* *',
+                39,
+            ],
+            [
+                '* * *',
+                39,
+            ],
+            [
+                '**',
+                39,
+            ],
+            [
+                'footer *',
+                15,
+            ],
+            [
+                'footer*',
+                16,
+            ],
         ];
     }
 

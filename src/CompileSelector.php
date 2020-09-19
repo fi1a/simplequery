@@ -110,8 +110,9 @@ class CompileSelector implements ICompileSelector
             return self::COMPILER_NEXT;
         }
         $prevType = $tokenizer->lookAtPrevType(2);
+        $prevImage = $tokenizer->lookAtPrevImage(2);
         $xpath = ($tokenizer->getIndex() > 0 ? '/' : '')
-            . static::descendant($prevType, $filter, $find, $token)
+            . static::descendant($prevType, $prevImage, $filter, $find, $token)
             . $token->getImage();
         if ($prevType === Token::T_SIBLING_NEXT) {
             $xpath .= '[1]';
@@ -135,7 +136,7 @@ class CompileSelector implements ICompileSelector
     /**
      * Определяет XPath селектор элемента
      */
-    protected static function descendant(int $type, bool $filter, bool $find, Token $token): string
+    protected static function descendant(int $type, $image, bool $filter, bool $find, Token $token): string
     {
         if (
             $type === Token::T_SIBLING_NEXT
@@ -144,7 +145,7 @@ class CompileSelector implements ICompileSelector
             return 'following-sibling::';
         }
         if ($type !== Token::T_DIRECT_CHILD) {
-            if ('*' == $token->getImage() && $type > 0) {
+            if ('*' == $token->getImage() && $type > 0 && '*' !== $image) {
                 return 'descendant::';
             }
 
