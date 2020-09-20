@@ -744,7 +744,7 @@ abstract class ASimpleQuery implements ISimpleQuery
      */
     protected function selectorFilter(string $selector): ISimpleQuery
     {
-        $selector = CompileSelector::compile($selector, true);
+        $selector = CompileSelector::compile(Formatter::format($selector, $this->getVariables()->getArrayCopy()), true);
 
         $lists = [];
         foreach ($this as $context) {
@@ -782,7 +782,10 @@ abstract class ASimpleQuery implements ISimpleQuery
         if (!count($contexts)) {
             $contexts = [$this->getDomDocument()->documentElement];
         }
-        $lists = $this->contextQueryXPath(CompileSelector::compile($selector, false, true), $contexts);
+        $lists = $this->contextQueryXPath(
+            CompileSelector::compile(Formatter::format($selector, $this->getVariables()->getArrayCopy()), false, true),
+            $contexts
+        );
 
         return $this->factory($this, $lists, $this->getFragments());
     }

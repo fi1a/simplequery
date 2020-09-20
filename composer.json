@@ -19,7 +19,7 @@
     "ext-json": "*",
     "ext-dom": "*",
     "ext-libxml": "*",
-    "fi1a/tokenizer": "^1.0.0",
+    "fi1a/tokenizer": "1.0.0",
     "fi1a/collection": "^1.0.0",
     "fi1a/format": "^1.0.0"
   },
