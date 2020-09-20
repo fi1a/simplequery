@@ -296,6 +296,7 @@ abstract class AAttribute extends AInsertion
      */
     protected function setCss(string $property, ?string $value = null): self
     {
+        $property = $this->humanize($property, '-');
         foreach ($this as $context) {
             $css = $this->getCssArray($context);
             $css[$property] = $value;

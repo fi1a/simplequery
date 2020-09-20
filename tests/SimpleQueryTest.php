@@ -1091,6 +1091,8 @@ class SimpleQueryTest extends TestCase
         $sq('#article1')->css(['color' => 'black']);
         $this->assertEquals('color: black;', $sq('#article1')->attr('style'));
         $sq->css('color', 'black');
+        $sq('#article1')->css(['backgroundColor' => 'white']);
+        $this->assertEquals('color: black; background-color: white;', $sq('#article1')->attr('style'));
     }
 
     /**
