@@ -647,6 +647,10 @@ class SimpleQueryTest extends TestCase
                 'footer*',
                 16,
             ],
+            [
+                'section article:eq(2)',
+                1,
+            ],
         ];
     }
 

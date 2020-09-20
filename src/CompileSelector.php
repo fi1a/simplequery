@@ -386,7 +386,7 @@ class CompileSelector implements ICompileSelector
                     break;
                 }
                 if ($token->getType() === Token::T_PSEUDO_VALUE) {
-                    $xpath = '[' . (int) $token->getImage() . ']';
+                    $xpath = '[' . ((int) $token->getImage() + 1) . ']';
                 }
             }
         } elseif ($token->getImage() === ':gt') {
