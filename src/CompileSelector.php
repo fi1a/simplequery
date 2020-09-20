@@ -135,6 +135,8 @@ class CompileSelector implements ICompileSelector
 
     /**
      * Определяет XPath селектор элемента
+     *
+     * @param int|string $image
      */
     protected static function descendant(int $type, $image, bool $filter, bool $find, Token $token): string
     {
@@ -145,7 +147,7 @@ class CompileSelector implements ICompileSelector
             return 'following-sibling::';
         }
         if ($type !== Token::T_DIRECT_CHILD) {
-            if ('*' == $token->getImage() && $type > 0 && '*' !== $image) {
+            if ($token->getImage() === '*' && $type > 0 && $image !== '*') {
                 return 'descendant::';
             }
 

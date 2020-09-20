@@ -653,9 +653,6 @@ class SimpleQueryTest extends TestCase
     /**
      * Селекторы
      *
-     * @param string $selector
-     * @param int    $count
-     *
      * @dataProvider dataProviderInvokeSelectors
      */
     public function testInvokeSelectors(string $selector, int $count): void
@@ -1336,6 +1333,10 @@ class SimpleQueryTest extends TestCase
     {
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $this->assertCount(15, $sq('body section')->find('*'));
+        $this->assertCount(3, $sq('body section')->find('article h1'));
+        $this->assertCount(3, $sq('body section')->find('div h1'));
+        $this->assertCount(3, $sq('body section')->find('article > h1'));
+        $this->assertCount(0, $sq('body section')->find('div > h1'));
     }
 
     /**
