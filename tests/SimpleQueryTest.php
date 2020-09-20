@@ -482,11 +482,11 @@ class SimpleQueryTest extends TestCase
             ],
             [
                 ':even',
-                19,
+                20,
             ],
             [
                 ':odd',
-                20,
+                19,
             ],
             [
                 ':gt(10) ',
