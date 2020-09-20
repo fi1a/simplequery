@@ -37,8 +37,8 @@ class CompileSelector implements ICompileSelector
         ':empty' => '[not(descendant::*) and string-length(.) = 0]',
         ':enabled' => '[(name(.)="input" or name(.)="button") and not(@disabled)]',
         ':selected' => '[@selected]',
-        ':even' => '[position() mod 2 = 0]',
-        ':odd' => '[position() mod 2 = 1]',
+        ':even' => '[(position() - 1) mod 2 = 0]',
+        ':odd' => '[(position() - 1) mod 2 = 1]',
         ':hidden' => '[translate(@type, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz")="hidden"]',
         ':file' => '[translate(@type, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz")="file"]',
         ':password' => '[translate(@type, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz")='
