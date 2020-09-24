@@ -953,7 +953,7 @@ class SimpleQueryTest extends TestCase
     public function testContents(): void
     {
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
-        $this->assertCount(7, $sq('#article1')->contents());
+        $this->assertCount(3, $sq('#article1')->contents());
     }
 
     /**
