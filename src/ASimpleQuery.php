@@ -535,7 +535,7 @@ abstract class ASimpleQuery implements ISimpleQuery
      */
     public function hasVariable(string $name): bool
     {
-        return array_key_exists($name, $this->variables);
+        return $this->variables->has($name);
     }
 
     /**
