@@ -50,7 +50,7 @@ class CompileSelector implements ICompileSelector
         ':input' => '[name(.)="input" or name(.)="button" or name(.)="textarea" or name(.)="select"]',
         ':first' => '[1]',
         ':last' => '[last()]',
-        ':parent' => '/..',
+        ':parent' => '[descendant::* or string-length(.) > 0]',
     ];
 
     /**
