@@ -183,7 +183,11 @@ abstract class ASimpleQuery implements ISimpleQuery
         if ($selector && $selector[0] === '<') {
             return $this->createFromHtml($this->factory($this, []), $selector);
         }
-        $lists = $this->contextQueryXPath($this->compile($selector), $contexts);
+        $xpath = $this->compile($selector);
+        if ($xpath === false) {
+            throw new ErrorException('CSS3 Selector syntax error');
+        }
+        $lists = $this->contextQueryXPath($xpath, $contexts);
 
         return $this->factory($this, $lists, $this->getFragments());
     }
@@ -744,11 +748,14 @@ abstract class ASimpleQuery implements ISimpleQuery
      */
     protected function selectorFilter(string $selector): ISimpleQuery
     {
-        $selector = CompileSelector::compile(Formatter::format($selector, $this->getVariables()->getArrayCopy()), true);
+        $xpath = CompileSelector::compile(Formatter::format($selector, $this->getVariables()->getArrayCopy()), true);
+        if ($xpath === false) {
+            throw new ErrorException('CSS3 Selector syntax error');
+        }
 
         $lists = [];
         foreach ($this as $context) {
-            $query = $this->queryXPath($selector, $context);
+            $query = $this->queryXPath($xpath, $context);
             if (!count($query)) {
                 continue;
             }
@@ -782,10 +789,15 @@ abstract class ASimpleQuery implements ISimpleQuery
         if (!count($contexts)) {
             $contexts = [$this->getDomDocument()->documentElement];
         }
-        $lists = $this->contextQueryXPath(
-            CompileSelector::compile(Formatter::format($selector, $this->getVariables()->getArrayCopy()), false, true),
-            $contexts
+        $xpath = CompileSelector::compile(
+            Formatter::format($selector, $this->getVariables()->getArrayCopy()),
+            false,
+            true
         );
+        if ($xpath === false) {
+            throw new ErrorException('CSS3 Selector syntax error');
+        }
+        $lists = $this->contextQueryXPath($xpath, $contexts);
 
         return $this->factory($this, $lists, $this->getFragments());
     }

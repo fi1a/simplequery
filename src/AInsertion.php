@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Fi1a\SimpleQuery;
 
 use DOMNode;
+use Fi1a\SimpleQuery\Exception\ErrorException;
 
 use const ENT_HTML5;
 use const ENT_QUOTES;
@@ -155,8 +156,12 @@ abstract class AInsertion extends ASimpleQuery
     protected function getSelector($selector): ISimpleQuery
     {
         if (is_string($selector)) {
+            $xpath = $this->compile($selector);
+            if ($xpath === false) {
+                throw new ErrorException('CSS3 Selector syntax error');
+            }
             $lists = $this->contextQueryXPath(
-                $this->compile($selector),
+                $xpath,
                 [$this->getDomDocument()->documentElement]
             );
             $selector = $this->factory($this, $lists);

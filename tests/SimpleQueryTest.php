@@ -6,6 +6,7 @@ namespace Fi1a\Unit\SimpleQuery;
 
 use DOMNode;
 use Fi1a\Collection\Collection;
+use Fi1a\SimpleQuery\Exception\ErrorException;
 use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
@@ -608,6 +609,16 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
+     * Обращение к объекту как к функции(контекст документа)
+     */
+    public function testInvokeSyntaxError(): void
+    {
+        $this->expectException(ErrorException::class);
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $sq('][');
+    }
+
+    /**
      * Провайдер данных для теста testInvokeSelectors
      *
      * @return mixed[]
@@ -708,6 +719,17 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
+     * Фильтрация элементов на основе селектора
+     */
+    public function testSelectorFilterSyntaxError(): void
+    {
+        $this->expectException(ErrorException::class);
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $input = $sq(':input');
+        $input->filter('][');
+    }
+
+    /**
      * Фильтрация элементов на основе сравнения элементов
      */
     public function testElementFilter(): void
@@ -785,8 +807,8 @@ class SimpleQueryTest extends TestCase
     public function testChildren(): void
     {
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
-        $this->assertCount(3, $sq('#article1')->children());
-        $this->assertCount(1, $sq('#article1')->children('h1'));
+        $this->assertCount(3, $sq('[data-fixture="321"] > article')->children());
+        $this->assertCount(1, $sq('[data-fixture="321"] > article')->children('h1'));
     }
 
     /**
@@ -921,6 +943,16 @@ class SimpleQueryTest extends TestCase
         $p = $sq('.e-content');
         $sq('<h2>Some h2</h2>')->insertAfter($p[0]);
         $this->assertCount(7, $sq('h2'));
+    }
+
+    /**
+     * Добавить после элементов
+     */
+    public function testInsertAfterSyntaxError(): void
+    {
+        $this->expectException(ErrorException::class);
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $sq('<h2>Some h2</h2>')->insertAfter('][');
     }
 
     /**
@@ -1343,6 +1375,16 @@ class SimpleQueryTest extends TestCase
         $this->assertCount(3, $sq('body section')->find('div h1'));
         $this->assertCount(3, $sq('body section')->find('article > h1'));
         $this->assertCount(0, $sq('body section')->find('div > h1'));
+    }
+
+    /**
+     * Поиск значения
+     */
+    public function testFindSyntaxError(): void
+    {
+        $this->expectException(ErrorException::class);
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $sq('body section')->find('][');
     }
 
     /**
