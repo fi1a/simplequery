@@ -119,6 +119,7 @@ class SimpleQueryTest extends TestCase
             (string) $sq
         );
         $sq->append('<html><body></body></html>');
+        $date = $sq('<div class="e-date">12.12.2016</div>');
         $article->append($date[0]);
     }
 

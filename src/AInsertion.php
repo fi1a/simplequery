@@ -115,6 +115,13 @@ abstract class AInsertion extends ASimpleQuery
         if (!count($contexts)) {
             $contexts = [$this->getDomDocument()->documentElement];
         }
+        $forRemove = [];
+        foreach ($html as $node) {
+            /**
+             * @var $node \DOMNode
+             */
+            $forRemove[] = $node;
+        }
         foreach ($contexts as $context) {
             /**
              * @var $context \DOMNode
@@ -122,6 +129,12 @@ abstract class AInsertion extends ASimpleQuery
             foreach ($html as $ind => $node) {
                 $html[$ind] = $context->appendChild($node->cloneNode(true));
             }
+        }
+        foreach ($forRemove as $node) {
+            /**
+             * @var $node \DOMNode
+             */
+            $node->parentNode->removeChild($node);
         }
 
         return $this;
@@ -136,19 +149,26 @@ abstract class AInsertion extends ASimpleQuery
         if (!count($this) || !count($selector)) {
             return $this;
         }
+        $forRemove = [];
+        foreach ($this as $insert) {
+            /**
+             * @var $node \DOMNode
+             */
+            $forRemove[] = $insert;
+        }
         foreach ($selector as $context) {
             /**
              * @var $context \DOMNode
              */
             foreach ($this as $insert) {
-                /**
-                 * @var $insert \DOMNode
-                 */
                 $context->appendChild($insert->cloneNode(true));
-                if ($insert->parentNode) {
-                    $insert->parentNode->removeChild($insert);
-                }
             }
+        }
+        foreach ($forRemove as $insert) {
+            /**
+             * @var $insert \DOMNode
+             */
+            $insert->parentNode->removeChild($insert);
         }
 
         return $this;
