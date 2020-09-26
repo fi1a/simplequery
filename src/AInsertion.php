@@ -156,12 +156,13 @@ abstract class AInsertion extends ASimpleQuery
              */
             $forRemove[] = $insert;
         }
+        $list = [];
         foreach ($selector as $context) {
             /**
              * @var $context \DOMNode
              */
             foreach ($this as $insert) {
-                $context->appendChild($insert->cloneNode(true));
+                $list[] = $context->appendChild($insert->cloneNode(true));
             }
         }
         foreach ($forRemove as $insert) {
@@ -171,7 +172,7 @@ abstract class AInsertion extends ASimpleQuery
             $insert->parentNode->removeChild($insert);
         }
 
-        return $this;
+        return $this->factory($this, $list);
     }
 
     /**
