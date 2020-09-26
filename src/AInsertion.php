@@ -141,7 +141,13 @@ abstract class AInsertion extends ASimpleQuery
              * @var $context \DOMNode
              */
             foreach ($this as $insert) {
+                /**
+                 * @var $insert \DOMNode
+                 */
                 $context->appendChild($insert->cloneNode(true));
+                if ($insert->parentNode) {
+                    $insert->parentNode->removeChild($insert);
+                }
             }
         }
 
