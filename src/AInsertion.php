@@ -227,6 +227,41 @@ abstract class AInsertion extends ASimpleQuery
     }
 
     /**
+     * @inheritDoc
+     */
+    public function insertBefore($selector): ISimpleQuery
+    {
+        $selector = $this->getSelector($selector);
+        if (!count($this) || !count($selector)) {
+            return $this;
+        }
+        $forRemove = [];
+        foreach ($this as $insert) {
+            /**
+             * @var $node \DOMNode
+             */
+            $forRemove[] = $insert;
+        }
+        $list = [];
+        foreach ($selector as $context) {
+            /**
+             * @var $context \DOMNode
+             */
+            foreach ($this as $insert) {
+                $list[] = $context->parentNode->insertBefore($insert->cloneNode(true), $context);
+            }
+        }
+        foreach ($forRemove as $insert) {
+            /**
+             * @var $insert \DOMNode
+             */
+            $insert->parentNode->removeChild($insert);
+        }
+
+        return $this->factory($this, $list);
+    }
+
+    /**
      * Возвращает экземпляр класса SimpleQuery на основе селектора или элемента
      *
      * @param string|ISimpleQuery|\DOMNode $selector

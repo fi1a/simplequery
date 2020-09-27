@@ -68,27 +68,6 @@ abstract class AManipulation extends AAttribute
     /**
      * @inheritDoc
      */
-    public function insertBefore($selector): ISimpleQuery
-    {
-        $selector = $this->getSelector($selector);
-        if (!count($this) || !count($selector)) {
-            return $this;
-        }
-        foreach ($selector as $context) {
-            /**
-             * @var $context \DOMNode
-             */
-            foreach ($this as $insert) {
-                $context->parentNode->insertBefore($insert->cloneNode(true), $context);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function __clone()
     {
         $list = [];
