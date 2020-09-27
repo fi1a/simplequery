@@ -672,7 +672,7 @@ abstract class ASimpleQuery implements ISimpleQuery
      */
     protected function restoreValue($value)
     {
-        $restore = json_decode($value);
+        $restore = json_decode($value, true);
         if (is_null($restore) && $value) {
             $restore = $value;
         }
