@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Fi1a\SimpleQuery;
 
 use DOMNode;
+use DOMText;
 use Fi1a\SimpleQuery\Exception\ErrorException;
 
 use const ENT_HTML5;
@@ -163,6 +164,56 @@ abstract class AInsertion extends ASimpleQuery
              */
             foreach ($this as $insert) {
                 $list[] = $context->appendChild($insert->cloneNode(true));
+            }
+        }
+        foreach ($forRemove as $insert) {
+            /**
+             * @var $insert \DOMNode
+             */
+            $insert->parentNode->removeChild($insert);
+        }
+
+        return $this->factory($this, $list);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function insertAfter($selector): ISimpleQuery
+    {
+        $selector = $this->getSelector($selector);
+        if (!count($this) || !count($selector)) {
+            return $this;
+        }
+        $forRemove = [];
+        foreach ($this as $insert) {
+            /**
+             * @var $node \DOMNode
+             */
+            $forRemove[] = $insert;
+        }
+        $list = [];
+        foreach ($selector as $context) {
+            /**
+             * @var $context \DOMNode
+             */
+            $node = $context;
+            while ($node = $node->nextSibling) {
+                if ($node instanceof DOMText) {
+                    continue;
+                }
+
+                break;
+            }
+            if (!$node) {
+                foreach ($this as $insert) {
+                    $list[] = $context->parentNode->appendChild($insert->cloneNode(true));
+                }
+
+                continue;
+            }
+            foreach ($this as $insert) {
+                $list[] = $context->parentNode->insertBefore($insert->cloneNode(true), $node);
             }
         }
         foreach ($forRemove as $insert) {

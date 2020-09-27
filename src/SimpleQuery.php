@@ -15,42 +15,6 @@ class SimpleQuery extends AFiltering
     /**
      * @inheritDoc
      */
-    public function insertAfter($selector): ISimpleQuery
-    {
-        $selector = $this->getSelector($selector);
-        if (!count($this) || !count($selector)) {
-            return $this;
-        }
-        foreach ($selector as $context) {
-            /**
-             * @var $context \DOMNode
-             */
-            $node = $context;
-            while ($node = $node->nextSibling) {
-                if ($node instanceof DOMText) {
-                    continue;
-                }
-
-                break;
-            }
-            if (!$node) {
-                foreach ($this as $insert) {
-                    $context->parentNode->appendChild($insert->cloneNode(true));
-                }
-
-                continue;
-            }
-            foreach ($this as $insert) {
-                $context->parentNode->insertBefore($insert->cloneNode(true), $node);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function data($key = null, $value = null)
     {
         if (!count($this)) {
