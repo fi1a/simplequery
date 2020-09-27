@@ -1,4 +1,4 @@
-# Структуры данных и коллекции
+# PHP библиотека для обхода и манипуляции с HTML-документами
 
 [![Latest Version][badge-release]][packagist]
 [![Software License][badge-license]][license]
@@ -32,6 +32,15 @@ $button = $sq('form > button');
 
 $button->html(); // Submit
 $button->hasClass('continue'); // true
+
+echo (string) $sq;
+```
+
+Результат вывода `echo (string) $sq;`:
+
+```html
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><h1>Updated title</h1><form><button class="continue">Submit</button></form></body></html>
 ```
 
 Подробная документация доступна в [wiki проекта](https://github.com/fi1a/simplequery/wiki).
