@@ -322,6 +322,13 @@ abstract class AInsertion extends ASimpleQuery
         if (!count($contexts)) {
             $contexts = [$this->getDomDocument()->documentElement];
         }
+        $forRemove = [];
+        foreach ($html as $node) {
+            /**
+             * @var $node \DOMNode
+             */
+            $forRemove[] = $node;
+        }
         foreach ($contexts as $context) {
             /**
              * @var $context \DOMNode
@@ -334,6 +341,12 @@ abstract class AInsertion extends ASimpleQuery
                 }
                 $html[$ind] = $context->appendChild($node->cloneNode(true));
             }
+        }
+        foreach ($forRemove as $node) {
+            /**
+             * @var $node \DOMNode
+             */
+            $node->parentNode->removeChild($node);
         }
 
         return $this;
