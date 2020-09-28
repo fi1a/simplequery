@@ -192,17 +192,28 @@ class CompileSelector implements ICompileSelector
      */
     protected static function descendantLine(Tokenizer $tokenizer, bool $filter): string
     {
+        $isRoot = false;
+        if ($tokenizer->getIndex() > 0) {
+            $index = 1;
+            if ($tokenizer->lookAtPrevType() === Token::T_WHITE_SPACE) {
+                $index = 2;
+            }
+            if ($tokenizer->lookAtPrevType($index) !== Token::T_MULTIPLE_SELECTOR) {
+                $isRoot = true;
+            }
+        }
         if (
             $tokenizer->lookAtPrevType(2) === Token::T_SIBLING_NEXT
             || $tokenizer->lookAtPrevType(2) === Token::T_SIBLING_AFTER
         ) {
-            return ($tokenizer->getIndex() > 0 ? '/' : '') . 'following-sibling::*';
+            return ($isRoot ? '/' : '') . 'following-sibling::*';
         }
         if (
             $tokenizer->lookAtPrevType() === Token::T_WHITE_SPACE
             || $tokenizer->lookAtPrevType() === ITokenizer::T_BOF
+            || $tokenizer->lookAtPrevType() === Token::T_MULTIPLE_SELECTOR
         ) {
-            return ($tokenizer->getIndex() > 0 ? '/' : '') . ($filter ? 'self::*' : 'descendant-or-self::*');
+            return ($isRoot ? '/' : '') . ($filter ? 'self::*' : 'descendant-or-self::*');
         }
 
         return '';
