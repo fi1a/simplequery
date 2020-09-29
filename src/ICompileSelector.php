@@ -10,7 +10,7 @@ namespace Fi1a\SimpleQuery;
 interface ICompileSelector
 {
     /**
-     * Компилирует CSS3 селекторов в XPath
+     * Компилирует CSS3 селекторы в XPath
      *
      * @return string|bool
      */

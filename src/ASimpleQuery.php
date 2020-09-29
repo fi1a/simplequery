@@ -481,7 +481,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     }
 
     /**
-     * Установить предыдущий
+     * Установить предыдущий экземпляр класса
      *
      * @return $this
      */
@@ -501,7 +501,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     }
 
     /**
-     * Установить экземпляр кдасса для метода end
+     * Установить экземпляр класса для метода end
      *
      * @return $this
      */

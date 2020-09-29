@@ -21,7 +21,7 @@ class SiblingsTest extends TestCase
         $result = file_get_contents(__DIR__ . '/Fixtures/siblings-example-result-1.html');
         $sq = new SimpleQuery($html);
         $elements = $sq('.hilite')->siblings()->css('color', 'red');
-        $sq('b')->text(count($elements));
+        $sq('b')->text((string) count($elements));
         $this->assertEquals($result, (string) $sq);
     }
 }
