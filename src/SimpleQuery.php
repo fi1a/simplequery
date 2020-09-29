@@ -159,9 +159,24 @@ class SimpleQuery extends AFiltering
      */
     public function siblings($selector = null): ISimpleQuery
     {
+        $lists = array_merge($this->prevAll($selector)->getArrayCopy(), $this->nextAll($selector)->getArrayCopy());
+        for ($i = 0; $i < count($lists); $i++) {
+            if (!isset($lists[$i])) {
+                continue;
+            }
+            for ($j = $i + 1; $j < count($lists); $j++) {
+                if (!isset($lists[$j])) {
+                    continue;
+                }
+                if ($lists[$i] === $lists[$j]) {
+                    unset($lists[$j]);
+                }
+            }
+        }
+
         return $this->factory(
             $this,
-            array_merge($this->prevAll($selector)->getArrayCopy(), $this->nextAll($selector)->getArrayCopy()),
+            array_values($lists),
             $this->getFragments()
         );
     }
