@@ -90,7 +90,7 @@ abstract class AFiltering extends ATreeTraversal
         if (is_null($end) || $end > $count) {
             $end = $count;
         }
-        $list = array_slice($this->getArrayCopy(), $start, $end - $start);
+        $list = array_slice($this->getArrayCopy(), $start, $end - ($start - 1));
 
         return $this->factory($this, $list, $this->getFragments());
     }
