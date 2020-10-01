@@ -39,7 +39,7 @@ interface ISimpleQuery extends ICollection
     /**
      * Поиск используя ХPath
      */
-    public function xpath(): ISimpleQuery;
+    public function xpath(string ...$selectors): ISimpleQuery;
 
     /**
      * Обращение к объекту как к функции

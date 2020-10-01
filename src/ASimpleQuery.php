@@ -195,9 +195,8 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function xpath(): ISimpleQuery
+    public function xpath(string ...$selectors): ISimpleQuery
     {
-        $selectors = func_get_args();
         $lists = [];
         $contexts = $this;
         if (!count($contexts)) {
