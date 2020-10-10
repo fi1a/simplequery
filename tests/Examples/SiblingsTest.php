@@ -17,8 +17,8 @@ class SiblingsTest extends TestCase
      */
     public function testSiblings(): void
     {
-        $html = file_get_contents(__DIR__ . '/Fixtures/siblings.html');
-        $result = file_get_contents(__DIR__ . '/Fixtures/siblings-result.html');
+        $html = file_get_contents(__DIR__ . '/Fixtures/Siblings.html');
+        $result = file_get_contents(__DIR__ . '/Fixtures/Siblings-result.html');
         $sq = new SimpleQuery($html);
         $elements = $sq('.hilite')->siblings()->css('color', 'red');
         $sq('b')->text((string) count($elements));

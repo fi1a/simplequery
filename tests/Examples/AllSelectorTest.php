@@ -17,8 +17,8 @@ class AllSelectorTest extends TestCase
      */
     public function testAllSelector(): void
     {
-        $html = file_get_contents(__DIR__ . '/Fixtures/allselector.html');
-        $result = file_get_contents(__DIR__ . '/Fixtures/allselector-result.html');
+        $html = file_get_contents(__DIR__ . '/Fixtures/AllSelector.html');
+        $result = file_get_contents(__DIR__ . '/Fixtures/AllSelector-result.html');
         $sq = new SimpleQuery($html);
         $elements = $sq('*')->css('border', '3px solid red');
         $elementCount = count($elements);
@@ -31,8 +31,8 @@ class AllSelectorTest extends TestCase
      */
     public function testAllSelectorInBody()
     {
-        $html = file_get_contents(__DIR__ . '/Fixtures/allselectorinbody.html');
-        $result = file_get_contents(__DIR__ . '/Fixtures/allselectorinbody-result.html');
+        $html = file_get_contents(__DIR__ . '/Fixtures/AllSelectorInBody.html');
+        $result = file_get_contents(__DIR__ . '/Fixtures/AllSelectorInBody-result.html');
         $sq = new SimpleQuery($html);
         $elements = $sq('body')->find('*')->css('border', '3px solid red');
         $elementCount = count($elements);
