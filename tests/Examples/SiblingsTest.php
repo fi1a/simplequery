@@ -15,10 +15,10 @@ class SiblingsTest extends TestCase
     /**
      * Получите все элементы на текущим уровне элемента li с классом "hilite".
      */
-    public function testExample1(): void
+    public function testSiblings(): void
     {
-        $html = file_get_contents(__DIR__ . '/Fixtures/siblings-example-1.html');
-        $result = file_get_contents(__DIR__ . '/Fixtures/siblings-example-result-1.html');
+        $html = file_get_contents(__DIR__ . '/Fixtures/siblings.html');
+        $result = file_get_contents(__DIR__ . '/Fixtures/siblings-result.html');
         $sq = new SimpleQuery($html);
         $elements = $sq('.hilite')->siblings()->css('color', 'red');
         $sq('b')->text((string) count($elements));
