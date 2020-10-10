@@ -14,7 +14,7 @@ abstract class AManipulation extends AAttribute
     /**
      * @inheritDoc
      */
-    public function after($html): ISimpleQuery
+    public function after($html)
     {
         /**
          * @var $html \DOMElement[]
@@ -83,7 +83,7 @@ abstract class AManipulation extends AAttribute
     /**
      * @inheritDoc
      */
-    public function detach($selector = null): ISimpleQuery
+    public function detach($selector = null)
     {
         if (!count($this)) {
             return $this;
@@ -104,7 +104,7 @@ abstract class AManipulation extends AAttribute
     /**
      * @inheritDoc
      */
-    public function clear(): ISimpleQuery
+    public function clear()
     {
         $contexts = $this;
         if (!count($contexts)) {
@@ -125,7 +125,7 @@ abstract class AManipulation extends AAttribute
     /**
      * @inheritDoc
      */
-    public function replaceAll($selector): ISimpleQuery
+    public function replaceAll($selector)
     {
         $selector = $this->getSelector($selector);
         if (!count($this) || !count($selector)) {
@@ -145,7 +145,7 @@ abstract class AManipulation extends AAttribute
     /**
      * @inheritDoc
      */
-    public function replaceWith($html): ISimpleQuery
+    public function replaceWith($html)
     {
         $html = $this->getInsertion($html);
         if (!count($this) || !count($html)) {
@@ -165,7 +165,7 @@ abstract class AManipulation extends AAttribute
     /**
      * @inheritDoc
      */
-    public function remove($selector = null): ISimpleQuery
+    public function remove($selector = null)
     {
         if (!count($this)) {
             return $this;

@@ -13,7 +13,7 @@ abstract class AFiltering extends ATreeTraversal
      * @inheritDoc
      * @SuppressWarnings(PHPMD.ShortMethodName)
      */
-    public function eq(int $index): ISimpleQuery
+    public function eq(int $index)
     {
         $list = [];
         if ($index >= 0 && $index < count($this)) {
@@ -34,7 +34,7 @@ abstract class AFiltering extends ATreeTraversal
     /**
      * @inheritDoc
      */
-    public function have($selector): ISimpleQuery
+    public function have($selector)
     {
         if (!count($this)) {
             return $this;
@@ -81,7 +81,7 @@ abstract class AFiltering extends ATreeTraversal
     /**
      * @inheritDoc
      */
-    public function slice(int $start, ?int $end = null): ISimpleQuery
+    public function slice(int $start, ?int $end = null)
     {
         $count = count($this);
         if (!$count || $start >= $count) {
@@ -98,7 +98,7 @@ abstract class AFiltering extends ATreeTraversal
     /**
      * @inheritDoc
      */
-    public function not($selector): ISimpleQuery
+    public function not($selector)
     {
         if (!count($this)) {
             return $this;

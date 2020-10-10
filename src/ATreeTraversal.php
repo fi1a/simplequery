@@ -15,7 +15,7 @@ abstract class ATreeTraversal extends AManipulation
     /**
      * @inheritDoc
      */
-    public function closest($selector): ISimpleQuery
+    public function closest($selector)
     {
         $list = [];
         foreach ($this as $context) {
@@ -41,7 +41,7 @@ abstract class ATreeTraversal extends AManipulation
     /**
      * @inheritDoc
      */
-    public function next($selector = null): ISimpleQuery
+    public function next($selector = null)
     {
         return $this->walk(true, $selector);
     }
@@ -49,7 +49,7 @@ abstract class ATreeTraversal extends AManipulation
     /**
      * @inheritDoc
      */
-    public function prev($selector = null): ISimpleQuery
+    public function prev($selector = null)
     {
         return $this->walk(false, $selector);
     }
@@ -90,7 +90,7 @@ abstract class ATreeTraversal extends AManipulation
     /**
      * @inheritDoc
      */
-    public function nextAll($selector = null): ISimpleQuery
+    public function nextAll($selector = null)
     {
         return $this->walkAll(true, $selector);
     }
@@ -98,7 +98,7 @@ abstract class ATreeTraversal extends AManipulation
     /**
      * @inheritDoc
      */
-    public function prevAll($selector = null): ISimpleQuery
+    public function prevAll($selector = null)
     {
         return $this->walkAll(false, $selector);
     }
@@ -137,7 +137,7 @@ abstract class ATreeTraversal extends AManipulation
     /**
      * @inheritDoc
      */
-    public function nextUntil($selector): ISimpleQuery
+    public function nextUntil($selector)
     {
         return $this->walkUntil(true, $selector);
     }
@@ -145,7 +145,7 @@ abstract class ATreeTraversal extends AManipulation
     /**
      * @inheritDoc
      */
-    public function prevUntil($selector): ISimpleQuery
+    public function prevUntil($selector)
     {
         return $this->walkUntil(false, $selector);
     }
@@ -180,7 +180,7 @@ abstract class ATreeTraversal extends AManipulation
     /**
      * @inheritDoc
      */
-    public function parent($selector = null): ISimpleQuery
+    public function parent($selector = null)
     {
         $list = [];
         foreach ($this as $context) {

@@ -41,7 +41,7 @@ class SimpleQuery extends AFiltering
     /**
      * @inheritDoc
      */
-    public function removeData($key): ISimpleQuery
+    public function removeData($key)
     {
         if (is_array($key)) {
             foreach ($this as $context) {
@@ -157,7 +157,7 @@ class SimpleQuery extends AFiltering
     /**
      * @inheritDoc
      */
-    public function siblings($selector = null): ISimpleQuery
+    public function siblings($selector = null)
     {
         $lists = array_merge($this->prevAll($selector)->getArrayCopy(), $this->nextAll($selector)->getArrayCopy());
         for ($i = 0; $i < count($lists); $i++) {
@@ -184,7 +184,7 @@ class SimpleQuery extends AFiltering
     /**
      * @inheritDoc
      */
-    public function parents($selector = null): ISimpleQuery
+    public function parents($selector = null)
     {
         $list = [];
         foreach ($this as $context) {
@@ -207,7 +207,7 @@ class SimpleQuery extends AFiltering
     /**
      * @inheritDoc
      */
-    public function parentsUntil($selector): ISimpleQuery
+    public function parentsUntil($selector)
     {
         $list = [];
         foreach ($this as $context) {

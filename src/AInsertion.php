@@ -19,7 +19,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * @inheritDoc
      */
-    public function unwrap(): ISimpleQuery
+    public function unwrap()
     {
         if (!count($this)) {
             return $this;
@@ -40,7 +40,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * @inheritDoc
      */
-    public function wrapAll($html): ISimpleQuery
+    public function wrapAll($html)
     {
         $html = $this->getInsertion($html);
         if (!count($this) || !count($html)) {
@@ -60,7 +60,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * @inheritDoc
      */
-    public function wrapInner($html): ISimpleQuery
+    public function wrapInner($html)
     {
         $html = $this->getInsertion($html);
         if (!count($this) || !count($html)) {
@@ -84,7 +84,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * @inheritDoc
      */
-    public function wrap($html): ISimpleQuery
+    public function wrap($html)
     {
         $html = $this->getInsertion($html);
         if (!count($this) || !count($html)) {
@@ -106,7 +106,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * @inheritDoc
      */
-    public function append($html): ISimpleQuery
+    public function append($html)
     {
         /**
          * @var $html \DOMNode[]
@@ -144,7 +144,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * @inheritDoc
      */
-    public function appendTo($selector): ISimpleQuery
+    public function appendTo($selector)
     {
         $selector = $this->getSelector($selector);
         if (!count($this) || !count($selector)) {
@@ -172,7 +172,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * @inheritDoc
      */
-    public function insertAfter($selector): ISimpleQuery
+    public function insertAfter($selector)
     {
         $selector = $this->getSelector($selector);
         if (!count($this) || !count($selector)) {
@@ -222,7 +222,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * @inheritDoc
      */
-    public function insertBefore($selector): ISimpleQuery
+    public function insertBefore($selector)
     {
         $selector = $this->getSelector($selector);
         if (!count($this) || !count($selector)) {
@@ -282,7 +282,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * @inheritDoc
      */
-    public function prependTo($selector): ISimpleQuery
+    public function prependTo($selector)
     {
         $selector = $this->getSelector($selector);
         if (!count($this) || !count($selector)) {
@@ -315,7 +315,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * @inheritDoc
      */
-    public function prepend($html): ISimpleQuery
+    public function prepend($html)
     {
         $html = $this->getInsertion($html);
         $contexts = $this;

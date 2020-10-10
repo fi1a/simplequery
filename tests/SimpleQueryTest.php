@@ -1288,7 +1288,7 @@ class SimpleQueryTest extends TestCase
     public function testEach(): void
     {
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
-        $sq('section > div > article')->each(function ($index, $node) use ($sq) {
+        $sq('section > div > article')->each(function ($node) use ($sq) {
             $sq($node)->remove();
         });
         $this->assertCount(0, $sq('section > div > article'));
@@ -1349,7 +1349,7 @@ class SimpleQueryTest extends TestCase
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $this->assertEquals(
             ['article1', 'article2', 'article3'],
-            $sq('section > div > article')->map(function ($index, $element) use ($sq) {
+            $sq('section > div > article')->map(function ($element) use ($sq) {
                 return $sq($element)->attr('id');
             })->getArrayCopy()
         );

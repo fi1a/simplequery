@@ -32,14 +32,16 @@ interface ISimpleQuery extends ICollection
     /**
      * Устанавливает контекст
      *
-     * @return static
+     * @return self
      */
-    public function setDomDocument(DOMDocument $context): ISimpleQuery;
+    public function setDomDocument(DOMDocument $context);
 
     /**
      * Поиск используя ХPath
+     *
+     * @return static
      */
-    public function xpath(string ...$selectors): ISimpleQuery;
+    public function xpath(string ...$selectors);
 
     /**
      * Обращение к объекту как к функции
@@ -53,7 +55,7 @@ interface ISimpleQuery extends ICollection
      *
      * @return static
      */
-    public function __invoke(): ISimpleQuery;
+    public function __invoke();
 
     /**
      * Возвращает скомпилированный XPath на основе CSS3 селектора
@@ -67,9 +69,9 @@ interface ISimpleQuery extends ICollection
      *
      * @param string|ISimpleQuery|\DOMNode $selector
      *
-     * @return static
+     * @return self
      */
-    public function add($selector): ISimpleQuery;
+    public function add($selector);
 
     /**
      * Добавить предыдущий набор элементов в стек к текущему набору
@@ -82,8 +84,10 @@ interface ISimpleQuery extends ICollection
 
     /**
      * Конец операции фильтрации в текущей цепочке
+     *
+     * @return static
      */
-    public function end(): ISimpleQuery;
+    public function end();
 
     /**
      * Фильтрация
@@ -92,14 +96,14 @@ interface ISimpleQuery extends ICollection
      *
      * @return static
      */
-    public function filter($selector): ISimpleQuery;
+    public function filter($selector);
 
     /**
      * Добавляет класс
      *
-     * @return static
+     * @return self
      */
-    public function addClass(string $class): ISimpleQuery;
+    public function addClass(string $class);
 
     /**
      * Возвращает true, если класс есть
@@ -109,117 +113,141 @@ interface ISimpleQuery extends ICollection
     /**
      * Удаляет класс
      *
-     * @return static
+     * @return self
      */
-    public function removeClass(string $class): ISimpleQuery;
+    public function removeClass(string $class);
 
     /**
      * Если класс есть - удаляет, если класса нет - добавляет
      *
-     * @return static
+     * @return self
      */
-    public function toggleClass(string $class): ISimpleQuery;
+    public function toggleClass(string $class);
 
     /**
      * Поиск
+     *
+     * @return static
      */
-    public function find(string $selector): ISimpleQuery;
+    public function find(string $selector);
 
     /**
      * Для каждого элемента, получить первый элемент,
      * соответствующий селектору для себя и всех родителей
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
+     *
+     * @return static
      */
-    public function closest($selector): ISimpleQuery;
+    public function closest($selector);
 
     /**
      * Следующий элемент
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     *
+     * @return static
      */
-    public function next($selector = null): ISimpleQuery;
+    public function next($selector = null);
 
     /**
      * Все следующие элементы
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     *
+     * @return static
      */
-    public function nextAll($selector = null): ISimpleQuery;
+    public function nextAll($selector = null);
 
     /**
      * Все следующие элементы до элемента удовлетворяющего селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
+     *
+     * @return static
      */
-    public function nextUntil($selector): ISimpleQuery;
+    public function nextUntil($selector);
 
     /**
      * Возврашает родительский элемент
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     *
+     * @return static
      */
-    public function parent($selector = null): ISimpleQuery;
+    public function parent($selector = null);
 
     /**
      * Возврашает все родительские элементы
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     *
+     * @return static
      */
-    public function parents($selector = null): ISimpleQuery;
+    public function parents($selector = null);
 
     /**
      * Возврашает все родительские элементы до элемента удовлетворяющего селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
+     *
+     * @return static
      */
-    public function parentsUntil($selector): ISimpleQuery;
+    public function parentsUntil($selector);
 
     /**
      * Предыдущий элемент
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     *
+     * @return static
      */
-    public function prev($selector = null): ISimpleQuery;
+    public function prev($selector = null);
 
     /**
      * Все предыдущие элементы
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     *
+     * @return static
      */
-    public function prevAll($selector = null): ISimpleQuery;
+    public function prevAll($selector = null);
 
     /**
      * Все предыдущие элементы до элемента удовлетворяющего селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
+     *
+     * @return static
      */
-    public function prevUntil($selector): ISimpleQuery;
+    public function prevUntil($selector);
 
     /**
      * Соседние элементы
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     *
+     * @return static
      */
-    public function siblings($selector = null): ISimpleQuery;
+    public function siblings($selector = null);
 
     /**
      * Добавить после элементов
      *
      * @param string|mixed[]|ISimpleQuery|\DOMNode $html
      *
-     * @return static
+     * @return self
      */
-    public function after($html): ISimpleQuery;
+    public function after($html);
 
     /**
      * Добавить до элементов
      *
      * @param string|mixed[]|ISimpleQuery|\DOMNode $html
      *
-     * @return static
+     * @return self
      */
-    public function before($html): ISimpleQuery;
+    public function before($html);
 
     /**
      * Добавить после элементов
@@ -228,7 +256,7 @@ interface ISimpleQuery extends ICollection
      *
      * @return static
      */
-    public function insertAfter($selector): ISimpleQuery;
+    public function insertAfter($selector);
 
     /**
      * Добавить до элементов
@@ -237,26 +265,32 @@ interface ISimpleQuery extends ICollection
      *
      * @return static
      */
-    public function insertBefore($selector): ISimpleQuery;
+    public function insertBefore($selector);
 
     /**
      * Возвращает дочерние элементы
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
+     *
+     * @return static
      */
-    public function children($selector = null): ISimpleQuery;
+    public function children($selector = null);
 
     /**
      * Возвращает дочерние элементы в том числе и текст
+     *
+     * @return static
      */
-    public function contents(): ISimpleQuery;
+    public function contents();
 
     /**
      * Убрать элементы соответствующие селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
+     *
+     * @return static
      */
-    public function not($selector): ISimpleQuery;
+    public function not($selector);
 
     /**
      * Добавление элемента
@@ -271,9 +305,9 @@ interface ISimpleQuery extends ICollection
      *
      * @param string|mixed[]|ISimpleQuery|\DOMNode $html
      *
-     * @return static
+     * @return self
      */
-    public function append($html): ISimpleQuery;
+    public function append($html);
 
     /**
      * Добавление элемента в переданный
@@ -282,7 +316,7 @@ interface ISimpleQuery extends ICollection
      *
      * @return static
      */
-    public function appendTo($selector): ISimpleQuery;
+    public function appendTo($selector);
 
     /**
      * Возвращает или устанавливает html
@@ -305,9 +339,9 @@ interface ISimpleQuery extends ICollection
      *
      * @param string|mixed[]|ISimpleQuery|\DOMNode $html
      *
-     * @return static
+     * @return self
      */
-    public function prepend($html): ISimpleQuery;
+    public function prepend($html);
 
     /**
      * Добавление элемента в начало переданного
@@ -316,7 +350,7 @@ interface ISimpleQuery extends ICollection
      *
      * @return static
      */
-    public function prependTo($selector): ISimpleQuery;
+    public function prependTo($selector);
 
     /**
      * Возвращает или устанавливает значение атрибута
@@ -333,9 +367,9 @@ interface ISimpleQuery extends ICollection
      *
      * @param $attribute
      *
-     * @return static
+     * @return self
      */
-    public function removeAttr(string $attribute): ISimpleQuery;
+    public function removeAttr(string $attribute);
 
     /**
      * Возвращает или устанавливает значение
@@ -351,9 +385,9 @@ interface ISimpleQuery extends ICollection
      *
      * @param string|string[] $property
      *
-     * @return static
+     * @return self
      */
-    public function css($property, ?string $value = null): ISimpleQuery;
+    public function css($property, ?string $value = null);
 
     /**
      * Установить или вернуть данные
@@ -370,95 +404,109 @@ interface ISimpleQuery extends ICollection
      *
      * @param string|string[] $key
      *
-     * @return static
+     * @return self
      */
-    public function removeData($key): ISimpleQuery;
+    public function removeData($key);
 
     /**
      * Обернуть структуру вокруг каждого элемента
      *
      * @param string|ISimpleQuery|\DOMNode $html
      *
-     * @return static
+     * @return self
      */
-    public function wrap($html): ISimpleQuery;
+    public function wrap($html);
 
     /**
      * Удаляет родительский элемент и помещает на его место
      *
-     * @return static
+     * @return self
      */
-    public function unwrap(): ISimpleQuery;
+    public function unwrap();
 
     /**
      * Обернуть структуру вокруг всех элементов
      *
      * @param string|ISimpleQuery|\DOMNode $html
      *
-     * @return static
+     * @return self
      */
-    public function wrapAll($html): ISimpleQuery;
+    public function wrapAll($html);
 
     /**
      * Обернуть структуру вокруг содержимого элементов
      *
      * @param string|ISimpleQuery|\DOMNode $html
      *
-     * @return static
+     * @return self
      */
-    public function wrapInner($html): ISimpleQuery;
+    public function wrapInner($html);
 
     /**
      * Удаляет элементы
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     *
+     * @return static
      */
-    public function detach($selector = null): ISimpleQuery;
+    public function detach($selector = null);
 
     /**
      * Удаляет все дочерние элементы
      *
-     * @return static
+     * @return self
      */
-    public function clear(): ISimpleQuery;
+    public function clear();
 
     /**
      * Удаляет элементы
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     *
+     * @return static
      */
-    public function remove($selector = null): ISimpleQuery;
+    public function remove($selector = null);
 
     /**
      * Заменяет
      *
      * @param string|ISimpleQuery|\DOMNode $selector
+     *
+     * @return static
      */
-    public function replaceAll($selector): ISimpleQuery;
+    public function replaceAll($selector);
 
     /**
      * Заменить каждый элемент с помощью нового содержимого
      *
      * @param string|ISimpleQuery|\DOMNode $html
+     *
+     * @return static
      */
-    public function replaceWith($html): ISimpleQuery;
+    public function replaceWith($html);
 
     /**
      * Возвращает элемент с определнным индексом
+     *
+     * @return static
      */
-    public function eq(int $index): ISimpleQuery;
+    public function eq(int $index);
 
     /**
      * Возвращает первый элемент
+     *
+     * @return self
      */
-    public function first(): ISimpleQuery;
+    public function first();
 
     /**
      * Имеет дочерние элементы удовлетвряющие селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
+     *
+     * @return static
      */
-    public function have($selector): ISimpleQuery;
+    public function have($selector);
 
     /**
      * Проверяет на соответствие селектору
@@ -471,18 +519,24 @@ interface ISimpleQuery extends ICollection
 
     /**
      * Возвращает последний элемент
+     *
+     * @return self
      */
-    public function last(): ISimpleQuery;
+    public function last();
 
     /**
      * Возвращает подмножество заданных диапазонов индексов
+     *
+     * @return static
      */
-    public function slice(int $start, ?int $end = null): ISimpleQuery;
+    public function slice(int $start, ?int $end = null);
 
     /**
      * Устанавливает переменную
+     *
+     * @return self
      */
-    public function setVariable(string $name, string $selector): ISimpleQuery;
+    public function setVariable(string $name, string $selector);
 
     /**
      * Возврашает переменную
@@ -498,8 +552,10 @@ interface ISimpleQuery extends ICollection
 
     /**
      * Добавляет переменные
+     *
+     * @return self
      */
-    public function addVariables(ICollection $variables): ISimpleQuery;
+    public function addVariables(ICollection $variables);
 
     /**
      * Удаляет переменную

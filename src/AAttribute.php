@@ -26,7 +26,7 @@ abstract class AAttribute extends AInsertion
     /**
      * @inheritDoc
      */
-    public function removeAttr(string $attribute): ISimpleQuery
+    public function removeAttr(string $attribute)
     {
         foreach ($this as $context) {
             /**
@@ -41,7 +41,7 @@ abstract class AAttribute extends AInsertion
     /**
      * @inheritDoc
      */
-    public function addClass(string $class): ISimpleQuery
+    public function addClass(string $class)
     {
         if (!count($this)) {
             return $this;
@@ -77,7 +77,7 @@ abstract class AAttribute extends AInsertion
     /**
      * @inheritDoc
      */
-    public function removeClass(string $class): ISimpleQuery
+    public function removeClass(string $class)
     {
         if (!count($this)) {
             return $this;
@@ -102,7 +102,7 @@ abstract class AAttribute extends AInsertion
     /**
      * @inheritDoc
      */
-    public function toggleClass(string $class): ISimpleQuery
+    public function toggleClass(string $class)
     {
         if (!count($this)) {
             return $this;

@@ -115,7 +115,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function setDomDocument(DOMDocument $domDocument): ISimpleQuery
+    public function setDomDocument(DOMDocument $domDocument)
     {
         $this->domDocument = $domDocument;
         $xpath = new DOMXPath($domDocument);
@@ -155,7 +155,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function __invoke(): ISimpleQuery
+    public function __invoke()
     {
         $instance = $this->getArgument(func_get_arg(0), [$this->getDomDocument()->documentElement]);
         $this->setEndClosure($instance, $instance);
@@ -195,7 +195,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function xpath(string ...$selectors): ISimpleQuery
+    public function xpath(string ...$selectors)
     {
         $lists = [];
         $contexts = $this;
@@ -514,7 +514,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function setVariable(string $name, string $selector): ISimpleQuery
+    public function setVariable(string $name, string $selector)
     {
         $this->variables[$name] = $selector;
 
@@ -544,7 +544,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function addVariables(ICollection $variables): ISimpleQuery
+    public function addVariables(ICollection $variables)
     {
         $this->variables = $variables;
 
@@ -690,7 +690,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function add($selector): ISimpleQuery
+    public function add($selector)
     {
         $sqInstance = $this->getArgument($selector, [$this->getDomDocument()->documentElement]);
         $this->exchangeArray(array_merge($this->getArrayCopy(), $sqInstance->getArrayCopy()));
@@ -701,7 +701,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function filter($selector): ISimpleQuery
+    public function filter($selector)
     {
         if (is_callable($selector) && !($selector instanceof ISimpleQuery)) {
             return $this->callbackFilter($selector);
@@ -782,7 +782,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function find(string $selector): ISimpleQuery
+    public function find(string $selector)
     {
         $contexts = $this;
         if (!count($contexts)) {
@@ -823,7 +823,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function end(): ISimpleQuery
+    public function end()
     {
         $end = $this->getEnd();
         if ($end) {
