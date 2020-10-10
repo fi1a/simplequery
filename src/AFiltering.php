@@ -26,7 +26,7 @@ abstract class AFiltering extends ATreeTraversal
     /**
      * @inheritDoc
      */
-    public function first(): ISimpleQuery
+    public function first()
     {
         return $this->eq(0);
     }
@@ -73,7 +73,7 @@ abstract class AFiltering extends ATreeTraversal
     /**
      * @inheritDoc
      */
-    public function last(): ISimpleQuery
+    public function last()
     {
         return $this->eq(count($this) - 1);
     }

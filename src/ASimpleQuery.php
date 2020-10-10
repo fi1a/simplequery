@@ -167,9 +167,11 @@ abstract class ASimpleQuery implements ISimpleQuery
      * Возвращает переданный контекст относительно документа
      *
      * @param string|ISimpleQuery $selector
-     * @param mixed[]               $contexts
+     * @param mixed[]             $contexts
+     *
+     * @return static
      */
-    protected function getArgument($selector, array $contexts): ISimpleQuery
+    protected function getArgument($selector, array $contexts)
     {
         if ($selector instanceof DOMNode) {
             return $this->factory($this, [$selector], $this->getFragments());
@@ -389,8 +391,10 @@ abstract class ASimpleQuery implements ISimpleQuery
 
     /**
      * @param string|mixed[]|ISimpleQuery|\DOMNode $html
+     *
+     * @return static
      */
-    protected function getInsertion($html): ISimpleQuery
+    protected function getInsertion($html)
     {
         if (is_array($html)) {
             $html = $this->getHtmlUsingArray($html);
@@ -427,8 +431,10 @@ abstract class ASimpleQuery implements ISimpleQuery
      *
      * @param \DOMNode[] $contexts
      * @param \DOMDocumentFragment[] $fragments
+     *
+     * @return static
      */
-    protected function factory(ISimpleQuery $source, array $contexts, array $fragments = []): ISimpleQuery
+    protected function factory(ISimpleQuery $source, array $contexts, array $fragments = [])
     {
         $instance = new static($source->getDomDocument(), $source->getEncoding());
         $instance->exchangeArray($contexts);
@@ -482,9 +488,9 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * Установить предыдущий экземпляр класса
      *
-     * @return $this
+     * @return self
      */
-    protected function setSource(?ISimpleQuery $source = null): self
+    protected function setSource(?ISimpleQuery $source = null)
     {
         $this->source = $source;
 
@@ -724,8 +730,10 @@ abstract class ASimpleQuery implements ISimpleQuery
      * Фильтрация на основе элементов
      *
      * @param DOMNode[] $filter
+     *
+     * @return static
      */
-    protected function elementFilter(array $filter): ISimpleQuery
+    protected function elementFilter(array $filter)
     {
         $lists = [];
         foreach ($this as $context) {
@@ -744,8 +752,10 @@ abstract class ASimpleQuery implements ISimpleQuery
 
     /**
      * Фильтрация элементов на основе селектора
+     *
+     * @return static
      */
-    protected function selectorFilter(string $selector): ISimpleQuery
+    protected function selectorFilter(string $selector)
     {
         $xpath = CompileSelector::compile(Formatter::format($selector, $this->getVariables()->getArrayCopy()), true);
         if ($xpath === false) {
@@ -766,8 +776,10 @@ abstract class ASimpleQuery implements ISimpleQuery
 
     /**
      * Фильтрация элементов на основе callback функции
+     *
+     * @return static
      */
-    protected function callbackFilter(callable $callback): ISimpleQuery
+    protected function callbackFilter(callable $callback)
     {
         $lists = [];
         foreach ($this as $ind => $node) {
@@ -804,7 +816,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function addBack($selector = null): self
+    public function addBack($selector = null)
     {
         $source = $this->getSource();
         if (!$source) {

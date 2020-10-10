@@ -129,7 +129,7 @@ class SimpleQuery extends AFiltering
     /**
      * @inheritDoc
      */
-    public function children($selector = null): ISimpleQuery
+    public function children($selector = null)
     {
         $list = [];
         foreach ($this as $context) {

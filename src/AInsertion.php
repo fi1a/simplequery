@@ -258,8 +258,10 @@ abstract class AInsertion extends ASimpleQuery
      * Возвращает экземпляр класса SimpleQuery на основе селектора или элемента
      *
      * @param string|ISimpleQuery|\DOMNode $selector
+     *
+     * @return static
      */
-    protected function getSelector($selector): ISimpleQuery
+    protected function getSelector($selector)
     {
         if (is_string($selector)) {
             $xpath = $this->compile($selector);
@@ -395,9 +397,9 @@ abstract class AInsertion extends ASimpleQuery
      *
      * @param string|ISimpleQuery $html
      *
-     * @return $this
+     * @return self
      */
-    protected function setHtml($html): self
+    protected function setHtml($html)
     {
         $html = $this->getInsertion($html);
         $contexts = $this;
@@ -438,9 +440,9 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * Устанавливает текст
      *
-     * @return $this
+     * @return self
      */
-    protected function setText(string $text): self
+    protected function setText(string $text)
     {
         $fragment = $this->getDomDocument()->createDocumentFragment();
         $fragment->appendXML(htmlspecialchars($text, ENT_QUOTES | ENT_HTML5));

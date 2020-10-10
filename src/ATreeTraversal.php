@@ -58,8 +58,10 @@ abstract class ATreeTraversal extends AManipulation
      * Обход элементов
      *
      * @param null $selector
+     *
+     * @return static
      */
-    protected function walk(bool $next, $selector = null): ISimpleQuery
+    protected function walk(bool $next, $selector = null)
     {
         $list = [];
         foreach ($this as $context) {
@@ -107,8 +109,10 @@ abstract class ATreeTraversal extends AManipulation
      * Обход всех элементов
      *
      * @param null $selector
+     *
+     * @return static
      */
-    protected function walkAll(bool $next, $selector = null): ISimpleQuery
+    protected function walkAll(bool $next, $selector = null)
     {
         $list = [];
         foreach ($this as $context) {
@@ -154,8 +158,10 @@ abstract class ATreeTraversal extends AManipulation
      * Обход всех элементов до переданного
      *
      * @param mixed $selector
+     *
+     * @return static
      */
-    protected function walkUntil(bool $next, $selector): ISimpleQuery
+    protected function walkUntil(bool $next, $selector)
     {
         $list = [];
         foreach ($this as $context) {

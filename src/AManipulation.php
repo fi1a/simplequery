@@ -49,7 +49,7 @@ abstract class AManipulation extends AAttribute
     /**
      * @inheritDoc
      */
-    public function before($html): ISimpleQuery
+    public function before($html)
     {
         $html = $this->getInsertion($html);
         if (!count($this) || !count($html)) {

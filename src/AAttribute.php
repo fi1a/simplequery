@@ -273,7 +273,7 @@ abstract class AAttribute extends AInsertion
     /**
      * @inheritDoc
      */
-    public function css($property, ?string $value = null): ISimpleQuery
+    public function css($property, ?string $value = null)
     {
         if (!count($this)) {
             return $this;
@@ -292,9 +292,9 @@ abstract class AAttribute extends AInsertion
     /**
      * Установить стиль
      *
-     * @return $this
+     * @return self
      */
-    protected function setCss(string $property, ?string $value = null): self
+    protected function setCss(string $property, ?string $value = null)
     {
         $property = $this->humanize($property, '-');
         foreach ($this as $context) {

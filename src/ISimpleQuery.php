@@ -78,7 +78,7 @@ interface ISimpleQuery extends ICollection
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
      *
-     * @return mixed
+     * @return self
      */
     public function addBack($selector = null);
 
