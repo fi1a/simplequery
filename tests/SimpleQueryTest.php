@@ -7,6 +7,7 @@ namespace Fi1a\Unit\SimpleQuery;
 use DOMNode;
 use Fi1a\Collection\Collection;
 use Fi1a\SimpleQuery\Exception\ErrorException;
+use Fi1a\SimpleQuery\Exception\LogicException;
 use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
@@ -1419,5 +1420,18 @@ class SimpleQueryTest extends TestCase
         $this->assertEquals('descendant-or-self::section/div/article', $div->compile('{{article}}'));
         $div->setVariable('new', 'div');
         $this->assertTrue($sq->hasVariable('new'));
+    }
+
+    /**
+     * Не поддерживаемый метод where из коллекции
+     */
+    public function testWhere(): void
+    {
+        /**
+         * @var $div ISimpleQuery
+         */
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $this->expectException(LogicException::class);
+        $sq->where('key', 'value');
     }
 }

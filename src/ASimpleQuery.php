@@ -15,6 +15,7 @@ use Fi1a\Collection\ICollection;
 use Fi1a\Collection\TCollection;
 use Fi1a\Format\Formatter;
 use Fi1a\SimpleQuery\Exception\ErrorException;
+use Fi1a\SimpleQuery\Exception\LogicException;
 use tidy;
 
 use const ENT_HTML5;
@@ -843,6 +844,14 @@ abstract class ASimpleQuery implements ISimpleQuery
         }
 
         return $this->factory($this, []);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function where(string $name, $value)
+    {
+        throw new LogicException();
     }
 
     /**
