@@ -1395,7 +1395,7 @@ class SimpleQueryTest extends TestCase
     public function testVariables(): void
     {
         /**
-         * @var $div ISimpleQuery
+         * @var $div \Fi1a\SimpleQuery\ISimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $sq->setVariables(new Collection([
@@ -1427,11 +1427,19 @@ class SimpleQueryTest extends TestCase
      */
     public function testWhere(): void
     {
-        /**
-         * @var $div ISimpleQuery
-         */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $this->expectException(LogicException::class);
         $sq->where('key', 'value');
+    }
+
+    /**
+     * Возвращает расходящиеся элементы
+     */
+    public function testDiff(): void
+    {
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $sectionArticle = $sq('section > div > article');
+        $article = $sq('article');
+        $this->assertCount(1, $article->diff($sectionArticle));
     }
 }
