@@ -448,7 +448,7 @@ abstract class ASimpleQuery implements ISimpleQuery
             SimpleQuery::class
         );
         $func($source, $this->getEndClosure($source), $fragments);
-        $instance->addVariables($source->getVariables());
+        $instance->setVariables($source->getVariables());
 
         return $instance;
     }
@@ -550,7 +550,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function addVariables(ICollection $variables)
+    public function setVariables(ICollection $variables)
     {
         $this->variables = $variables;
 

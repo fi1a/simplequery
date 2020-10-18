@@ -1397,7 +1397,7 @@ class SimpleQueryTest extends TestCase
          * @var $div ISimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
-        $sq->addVariables(new Collection([
+        $sq->setVariables(new Collection([
             'article' => 'section > div > article',
             'h1' => 'section > div > article > h1',
             'body' => 'body',

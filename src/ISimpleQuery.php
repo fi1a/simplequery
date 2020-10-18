@@ -555,7 +555,7 @@ interface ISimpleQuery extends ICollection
      *
      * @return self
      */
-    public function addVariables(ICollection $variables);
+    public function setVariables(ICollection $variables);
 
     /**
      * Удаляет переменную
