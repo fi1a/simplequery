@@ -566,4 +566,11 @@ interface ISimpleQuery extends ICollection
      * Возвращает все переменные
      */
     public function getVariables(): ICollection;
+
+    /**
+     * Возвращает html документа или общий html наборов
+     *
+     * @return string
+     */
+    public function getDocumentHtml(): string;
 }

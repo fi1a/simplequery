@@ -415,6 +415,14 @@ abstract class ASimpleQuery implements ISimpleQuery
      */
     public function __toString()
     {
+        return $this->getDocumentHtml();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getDocumentHtml(): string
+    {
         $contexts = $this;
         if (!count($contexts)) {
             return $this->getDomDocument()->saveHTML();
