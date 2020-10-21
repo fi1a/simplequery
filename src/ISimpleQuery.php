@@ -569,8 +569,6 @@ interface ISimpleQuery extends ICollection
 
     /**
      * Возвращает html документа или общий html наборов
-     *
-     * @return string
      */
     public function getDocumentHtml(): string;
 }
