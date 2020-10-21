@@ -94,7 +94,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     }
 
     /**
-     * Устанавдивает кодировку
+     * Устанавливает кодировку
      *
      * @return $this
      */
@@ -499,7 +499,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     }
 
     /**
-     * Вернуть экземпляр кдасса для метода end
+     * Вернуть экземпляр класса для метода end
      */
     protected function getEnd(): ?ISimpleQuery
     {

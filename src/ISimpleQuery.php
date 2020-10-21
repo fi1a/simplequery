@@ -37,7 +37,7 @@ interface ISimpleQuery extends ICollection
     public function setDomDocument(DOMDocument $context);
 
     /**
-     * Поиск используя ХPath
+     * Поиск, используя ХPath
      *
      * @return static
      */
@@ -160,7 +160,7 @@ interface ISimpleQuery extends ICollection
     public function nextAll($selector = null);
 
     /**
-     * Все следующие элементы до элемента удовлетворяющего селектору
+     * Все следующие элементы до элемента, удовлетворяющего селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
      *
@@ -187,7 +187,7 @@ interface ISimpleQuery extends ICollection
     public function parents($selector = null);
 
     /**
-     * Возврашает все родительские элементы до элемента удовлетворяющего селектору
+     * Возврашает все родительские элементы до элемента, удовлетворяющего селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
      *
@@ -214,7 +214,7 @@ interface ISimpleQuery extends ICollection
     public function prevAll($selector = null);
 
     /**
-     * Все предыдущие элементы до элемента удовлетворяющего селектору
+     * Все предыдущие элементы до элемента, удовлетворяющего селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
      *
@@ -277,14 +277,14 @@ interface ISimpleQuery extends ICollection
     public function children($selector = null);
 
     /**
-     * Возвращает дочерние элементы в том числе и текст
+     * Возвращает дочерние элементы, в том числе и текст
      *
      * @return static
      */
     public function contents();
 
     /**
-     * Убрать элементы соответствующие селектору
+     * Убрать элементы, соответствующие селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
      *
@@ -486,7 +486,7 @@ interface ISimpleQuery extends ICollection
     public function replaceWith($html);
 
     /**
-     * Возвращает элемент с определнным индексом
+     * Возвращает элемент с определенным индексом
      *
      * @return static
      */
@@ -500,7 +500,7 @@ interface ISimpleQuery extends ICollection
     public function first();
 
     /**
-     * Имеет дочерние элементы удовлетвряющие селектору
+     * Имеет дочерние элементы, удовлетвряющие селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
      *

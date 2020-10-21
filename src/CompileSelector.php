@@ -381,7 +381,7 @@ class CompileSelector implements ICompileSelector
     }
 
     /**
-     * Возвращает интерпритацию всевдокласса
+     * Возвращает интерпритацию псевдокласса
      *
      * @return bool|string
      */

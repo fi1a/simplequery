@@ -152,7 +152,7 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
-     * Провайдер данных ждя теста testXPath
+     * Провайдер данных для теста testXPath
      *
      * @return mixed[]
      */
@@ -691,7 +691,7 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
-     * Фильтрация элементов с использование функции
+     * Фильтрация элементов с использованием функции
      */
     public function testCallbackFilter(): void
     {
@@ -844,7 +844,7 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
-     * Все следующие элементы до элемента удовлетворяющего селектору
+     * Все следующие элементы до элемента, удовлетворяющего селектору
      */
     public function testNextUntil(): void
     {
@@ -863,7 +863,7 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
-     * Возврашает родительский элемент
+     * Возврашает все родительские элементы
      */
     public function testParents(): void
     {
@@ -899,7 +899,7 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
-     * Все предыдущие элементы до элемента удовлетворяющего селектору
+     * Все предыдущие элементы до элемента, удовлетворяющего селектору
      */
     public function testPrevUntil(): void
     {
@@ -982,7 +982,7 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
-     * Возвращает дочерние элементы в том числе и текст
+     * Возвращает дочерние элементы, в том числе и текст
      */
     public function testContents(): void
     {
@@ -991,7 +991,7 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
-     * Убрать элементы соответствующие селектору
+     * Убрать элементы, соответствующие селектору
      */
     public function testNot(): void
     {
@@ -1296,7 +1296,7 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
-     * Возвращает элемент с определнным индексом
+     * Возвращает элемент с определенным индексом
      */
     public function testEq(): void
     {
@@ -1314,7 +1314,7 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
-     * Имеет дочерние элементы удовлетвряющие селектору
+     * Имеет дочерние элементы, удовлетвряющие селектору
      */
     public function testHave(): void
     {
@@ -1343,7 +1343,7 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
-     * Вызывает переданную функцию передавая ключ и значение из коллекции и заменяет элемент результатом
+     * Вызывает функцию, передавая ключ и значение из коллекции и заменяет элемент результатом
      */
     public function testMap(): void
     {
