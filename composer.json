@@ -20,7 +20,7 @@
     "ext-dom": "*",
     "ext-libxml": "*",
     "fi1a/tokenizer": ">=1.0.0 <1.1.0",
-    "fi1a/collection": "1.1.0.x-dev",
+    "fi1a/collection": ">=1.1.0 <1.2.0",
     "fi1a/format": ">=1.0.0 <1.1.0"
   },
   "require-dev": {
