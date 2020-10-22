@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class AllSelectorTest extends TestCase
 {
     /**
-     * Найти все элементы включая (html, head, body).
+     * Найти все элементы, включая (html, head, body).
      */
     public function testAllSelector(): void
     {

@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class AttributeStartsWithSelectorTest extends TestCase
 {
     /**
-     * Найти все input у которых атрибут name начинается с "news" и установить значение у них.
+     * Найти все input, у которых атрибут name начинается с "news" и установить значение у них.
      */
     public function testAttributeStartsWithSelector(): void
     {

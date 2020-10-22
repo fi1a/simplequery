@@ -8,7 +8,7 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Получите потомков каждого элемента, отфильтрованных с помощью селектора.
+ * Получить потомков каждого элемента, отфильтрованных с помощью селектора.
  */
 class FindTest extends TestCase
 {

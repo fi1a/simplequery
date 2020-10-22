@@ -8,7 +8,7 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Выбирает элементы с указанным атрибутом и любым значением.
+ * Выбрать элементы с указанным атрибутом и любым значением.
  */
 class HasAttributeSelectorTest extends TestCase
 {

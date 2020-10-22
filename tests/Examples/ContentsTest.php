@@ -8,7 +8,7 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Возвращает все дочерние элементы в том числе и текст.
+ * Возвращает все дочерние элементы, в том числе и текст.
  */
 class ContentsTest extends TestCase
 {

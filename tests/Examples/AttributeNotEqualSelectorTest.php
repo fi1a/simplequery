@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 class AttributeNotEqualSelectorTest extends TestCase
 {
     /**
-     * Найти все input которые не имеют в атрибуте name значение "newsletter" и добавить текст после span.
+     * Найти все input, которые не имеют в атрибуте name значение "newsletter" и добавить текст после span.
      */
     public function testAttributeNotEqualSelector(): void
     {

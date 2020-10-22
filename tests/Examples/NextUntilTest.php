@@ -8,12 +8,12 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Все следующие элементы до элемента удовлетворяющего селектору.
+ * Все следующие элементы до элемента, удовлетворяющего селектору.
  */
 class NextUntilTest extends TestCase
 {
     /**
-     * Все следующие элементы до элемента удовлетворяющего селектору.
+     * Все следующие элементы до элемента, удовлетворяющего селектору.
      */
     public function testNextUntil(): void
     {

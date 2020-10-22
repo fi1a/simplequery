@@ -8,12 +8,12 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Сократите набор элементов до тех, которые соответствуют селектору.
+ * Сократить набор элементов до тех, которые соответствуют селектору.
  */
 class FilterTest extends TestCase
 {
     /**
-     * Поменять цвет всем div'м, затем добавить border тем которые имеют класс "middle".
+     * Поменять цвет всем div'м, затем добавить border тем, которые имеют класс "middle".
      */
     public function testFilter(): void
     {

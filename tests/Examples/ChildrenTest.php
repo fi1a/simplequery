@@ -8,7 +8,7 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Получить дочерние элементы каждого элемента в наборе элементов,
+ * Получить дочерние элементы каждого элемента в наборе,
  * при необходимости отфильтрованных с помощью селектора.
  */
 class ChildrenTest extends TestCase

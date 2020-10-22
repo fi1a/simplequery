@@ -8,7 +8,7 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Убрать элементы соответствующие селектору.
+ * Убрать элементы, соответствующие селектору.
  */
 class NotTest extends TestCase
 {

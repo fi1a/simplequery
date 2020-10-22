@@ -8,7 +8,7 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Возвращает набор элементов заданного диапазоном индексов.
+ * Возвращает набор элементов, заданного диапазоном индексов.
  */
 class SliceTest extends TestCase
 {

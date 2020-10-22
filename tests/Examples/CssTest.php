@@ -8,7 +8,7 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Получите значение свойства стиля для первого элемента или
+ * Получить значение свойства стиля для первого элемента или
  * установить одно или несколько свойств CSS для каждого элемента.
  */
 class CssTest extends TestCase

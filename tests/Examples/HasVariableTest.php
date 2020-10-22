@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class HasVariableTest extends TestCase
 {
     /**
-     * Проверить наличие переменной с ключом "news" предварительно установленный.
+     * Проверить наличие переменной с ключом "news", предварительно установленный.
      */
     public function testHasVariable(): void
     {

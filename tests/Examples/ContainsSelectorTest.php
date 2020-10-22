@@ -8,12 +8,12 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Выбрать все элементы содержащие текст.
+ * Выбрать все элементы, содержащие текст.
  */
 class ContainsSelectorTest extends TestCase
 {
     /**
-     * Найти все теги div содержащие "John".
+     * Найти все теги div, содержащие "John".
      */
     public function testContainsSelector(): void
     {

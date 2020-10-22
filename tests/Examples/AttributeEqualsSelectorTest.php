@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class AttributeEqualsSelectorTest extends TestCase
 {
     /**
-     * Найти все input со значение "Hot Fuzz" и изменить текст у следующего тега span.
+     * Найти все input со значением "Hot Fuzz" и изменить текст у следующего тега span.
      */
     public function testAttributeEqualsSelector(): void
     {

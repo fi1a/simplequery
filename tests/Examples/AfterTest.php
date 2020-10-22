@@ -8,7 +8,7 @@ use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Добавить, после каждого элемента в наборе элементов.
+ * Добавить после каждого элемента в наборе элементов.
  */
 class AfterTest extends TestCase
 {

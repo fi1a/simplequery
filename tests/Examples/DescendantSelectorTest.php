@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class DescendantSelectorTest extends TestCase
 {
     /**
-     * Отметить все input, являющиеся потомками form, синей точечной рамкой.
+     * Отметить все input, являющиеся потомками form, синей рамкой.
      * Отметить желтым фоном input, которые являются потомками fieldset, являющегося потомком form.
      */
     public function testDescendantSelector(): void

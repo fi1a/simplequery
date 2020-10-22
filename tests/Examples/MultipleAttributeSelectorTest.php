@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class MultipleAttributeSelectorTest extends TestCase
 {
     /**
-     * Найти все input'ы имеющие атрибут id и у которых значение атрибута name заканчивается на "man".
+     * Найти все input'ы имеющие атрибут id, у которых значение атрибута name заканчивается на "man".
      */
     public function testMultipleAttributeSelector(): void
     {

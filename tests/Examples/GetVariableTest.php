@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class GetVariableTest extends TestCase
 {
     /**
-     * Получить переменную с ключом "news" предварительно установленную.
+     * Получить переменную с ключом "news", предварительно установленную.
      */
     public function testGetVariable(): void
     {

@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class ClosestTest extends TestCase
 {
     /**
-     * Найти элементы с классом "bar" и получить первый элемент с классом "foo"
+     * Найти элементы с классом "bar" и получить первый элемент с классом "foo",
      * соответсвующий самому элементу или его предку.
      */
     public function testClosest(): void
