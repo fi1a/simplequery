@@ -18,6 +18,9 @@
 composer require fi1a/simplequery
 ```
 
+**Внимание!** Совместимость версий не гарантируется при переходе major или minor версии.
+Указывайте допустимую версию пакета в своем проекте следующим образом: ```"fi1a/collection": ">=1.1.0 <1.2.0"```.
+
 ## Краткий обзор
 
 ```php
@@ -48,13 +51,13 @@ echo (string) $sq;
 [badge-release]: https://img.shields.io/packagist/v/fi1a/simplequery?label=release
 [badge-license]: https://img.shields.io/github/license/fi1a/simplequery?style=flat-square
 [badge-php]: https://img.shields.io/packagist/php-v/fi1a/simplequery?style=flat-square
-[badge-build]: https://img.shields.io/travis/fi1a/simplequery?style=flat-square
+[badge-build]: https://img.shields.io/travis/com/fi1a/simplequery?style=flat-square
 [badge-coverage]: https://img.shields.io/coveralls/github/fi1a/simplequery/master.svg?style=flat-square
 [badge-downloads]: https://img.shields.io/packagist/dt/fi1a/simplequery.svg?style=flat-square&colorB=mediumvioletred
 
 [packagist]: https://packagist.org/packages/fi1a/simplequery
 [license]: https://github.com/fi1a/simplequery/blob/master/LICENSE
 [php]: https://php.net
-[build]: https://travis-ci.org/fi1a/simplequery
+[build]: https://app.travis-ci.com/github/fi1a/simplequery
 [coverage]: https://coveralls.io/r/fi1a/simplequery?branch=master
 [downloads]: https://packagist.org/packages/fi1a/simplequery
