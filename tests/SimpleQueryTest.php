@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Fi1a\Unit\SimpleQuery;
 
 use DOMNode;
-use Fi1a\Collection\Collection;
+use Fi1a\Collection\DataType\ArrayObject;
 use Fi1a\SimpleQuery\Exception\ErrorException;
 use Fi1a\SimpleQuery\Exception\LogicException;
 use Fi1a\SimpleQuery\SimpleQuery;
@@ -1398,7 +1398,7 @@ class SimpleQueryTest extends TestCase
          * @var $div \Fi1a\SimpleQuery\ISimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
-        $sq->setVariables(new Collection([
+        $sq->setVariables(new ArrayObject([
             'article' => 'section > div > article',
             'h1' => 'section > div > article > h1',
             'body' => 'body',

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Fi1a\Unit\SimpleQuery\Examples;
 
-use Fi1a\Collection\Collection;
+use Fi1a\Collection\DataType\ArrayObject;
 use Fi1a\SimpleQuery\SimpleQuery;
 use PHPUnit\Framework\TestCase;
 
@@ -19,7 +19,7 @@ class DeleteVariableTest extends TestCase
     public function testDeleteVariable(): void
     {
         $sq = new SimpleQuery();
-        $variables = new Collection([
+        $variables = new ArrayObject([
             'news' => 'body > .content > .news',
             'title' => 'h1',
         ]);
