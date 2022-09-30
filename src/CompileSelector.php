@@ -427,6 +427,15 @@ class CompileSelector implements ICompileSelector
                     $xpath = '[contains(., "' . str_replace('"', '\\"', $token->getImage()) . '")]';
                 }
             }
+        } elseif ($token->getImage() === ':lang') {
+            while (($token = $tokenizer->next()) !== ITokenizer::T_EOF) {
+                if ($token->getType() === Token::T_CLOSE_BRACKET) {
+                    break;
+                }
+                if ($token->getType() === Token::T_PSEUDO_VALUE) {
+                    $xpath = '[contains(@lang, "' . str_replace('"', '\\"', $token->getImage()) . '")]';
+                }
+            }
         }
 
         return $xpath;

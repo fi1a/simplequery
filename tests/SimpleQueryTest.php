@@ -575,6 +575,10 @@ class SimpleQueryTest extends TestCase
                 'input:text + :button',
                 1,
             ],
+            [
+                ':lang(en-EN)',
+                1,
+            ],
         ];
     }
 
