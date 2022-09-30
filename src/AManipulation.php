@@ -104,7 +104,7 @@ abstract class AManipulation extends AAttribute
     /**
      * @inheritDoc
      */
-    public function clear()
+    public function empty()
     {
         $contexts = $this;
         if (!count($contexts)) {

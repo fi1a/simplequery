@@ -33,7 +33,7 @@ interface ISimpleQuery extends IMapArrayObject
     /**
      * Устанавливает контекст
      *
-     * @return self
+     * @return static
      */
     public function setDomDocument(DOMDocument $context);
 
@@ -70,7 +70,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param string|ISimpleQuery|\DOMNode $selector
      *
-     * @return self
+     * @return static
      */
     public function add($selector);
 
@@ -79,7 +79,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
      *
-     * @return self
+     * @return static
      */
     public function addBack($selector = null);
 
@@ -102,7 +102,7 @@ interface ISimpleQuery extends IMapArrayObject
     /**
      * Добавляет класс
      *
-     * @return self
+     * @return static
      */
     public function addClass(string $class);
 
@@ -114,14 +114,14 @@ interface ISimpleQuery extends IMapArrayObject
     /**
      * Удаляет класс
      *
-     * @return self
+     * @return static
      */
     public function removeClass(string $class);
 
     /**
      * Если класс есть - удаляет, если класса нет - добавляет
      *
-     * @return self
+     * @return static
      */
     public function toggleClass(string $class);
 
@@ -237,7 +237,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param string|mixed[]|ISimpleQuery|\DOMNode $html
      *
-     * @return self
+     * @return static
      */
     public function after($html);
 
@@ -246,7 +246,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param string|mixed[]|ISimpleQuery|\DOMNode $html
      *
-     * @return self
+     * @return static
      */
     public function before($html);
 
@@ -340,7 +340,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param string|mixed[]|ISimpleQuery|\DOMNode $html
      *
-     * @return self
+     * @return static
      */
     public function prepend($html);
 
@@ -368,7 +368,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param $attribute
      *
-     * @return self
+     * @return static
      */
     public function removeAttr(string $attribute);
 
@@ -386,7 +386,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param string|string[] $property
      *
-     * @return self
+     * @return static
      */
     public function css($property, ?string $value = null);
 
@@ -405,7 +405,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param string|string[] $key
      *
-     * @return self
+     * @return static
      */
     public function removeData($key);
 
@@ -414,14 +414,14 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param string|ISimpleQuery|\DOMNode $html
      *
-     * @return self
+     * @return static
      */
     public function wrap($html);
 
     /**
      * Удаляет родительский элемент и помещает на его место
      *
-     * @return self
+     * @return static
      */
     public function unwrap();
 
@@ -430,7 +430,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param string|ISimpleQuery|\DOMNode $html
      *
-     * @return self
+     * @return static
      */
     public function wrapAll($html);
 
@@ -439,7 +439,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @param string|ISimpleQuery|\DOMNode $html
      *
-     * @return self
+     * @return static
      */
     public function wrapInner($html);
 
@@ -453,13 +453,6 @@ interface ISimpleQuery extends IMapArrayObject
     public function detach($selector = null);
 
     /**
-     * Удаляет все дочерние элементы
-     *
-     * @return self
-     */
-    public function clear();
-
-    /**
      * Удаляет элементы
      *
      * @param ISimpleQuery|string|callable|\DOMNode|null $selector
@@ -467,6 +460,13 @@ interface ISimpleQuery extends IMapArrayObject
      * @return static
      */
     public function remove($selector = null);
+
+    /**
+     * Удалите все дочерние узлы элементов из DOM.
+     *
+     * @return static
+     */
+    public function empty();
 
     /**
      * Заменяет

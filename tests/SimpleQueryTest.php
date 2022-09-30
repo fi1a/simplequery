@@ -1240,12 +1240,12 @@ class SimpleQueryTest extends TestCase
     /**
      * Удаляет все дочерние элементы
      */
-    public function testClear(): void
+    public function testEmpty(): void
     {
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
-        $sq('section > div')->clear();
+        $sq('section > div')->empty();
         $this->assertCount(0, $sq('section > div > article'));
-        $sq->clear();
+        $sq->empty();
     }
 
     /**
