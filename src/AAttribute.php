@@ -273,10 +273,24 @@ abstract class AAttribute extends AInsertion
     /**
      * @inheritDoc
      */
-    public function css($property, ?string $value = null)
+    public function css($property = null, $value = null)
     {
-        if (!count($this)) {
+        if ($this->isEmpty()) {
             return $this;
+        }
+        if (is_null($value) && !is_array($property)) {
+            $context = reset($this->storage);
+            $css = $this->getCssArray($context);
+            $result = [];
+            foreach ($css as $name => $value) {
+                $result[$this->camelize($name)] = $value;
+            }
+
+            if (is_null($property)) {
+                return $result;
+            }
+
+            return $result[$property] ?? null;
         }
         if (is_array($property)) {
             foreach ($property as $name => $value) {
@@ -290,11 +304,27 @@ abstract class AAttribute extends AInsertion
     }
 
     /**
+     * @inheritDoc
+     */
+    public function show()
+    {
+        foreach ($this as $context) {
+            $css = $this->getCssArray($context);
+            if (isset($css['display']) && mb_strtolower($css['display']) === 'none') {
+                unset($css['display']);
+            }
+            $this->setCssArray($context, $css);
+        }
+    }
+
+    /**
      * Установить стиль
+     *
+     * @param mixed $value
      *
      * @return self
      */
-    protected function setCss(string $property, ?string $value = null)
+    protected function setCss(string $property, $value = null)
     {
         $property = $this->humanize($property, '-');
         foreach ($this as $context) {
@@ -309,18 +339,23 @@ abstract class AAttribute extends AInsertion
     /**
      * Устанавливает стили для элемента
      *
-     * @param string[] $css
+     * @param mixed[] $css
      */
     protected function setCssArray(DOMElement $context, array $css): void
     {
         $style = '';
         foreach ($css as $name => $value) {
-            if (is_null($value)) {
+            if (is_null($value) || $value === false || $value === '') {
                 continue;
             }
             $style .= ($style ? ' ' : '') . $name . ': ' . $this->convertValue($value) . ';';
         }
-        $context->setAttribute('style', $style);
+        if ($style) {
+            $context->setAttribute('style', $style);
+
+            return;
+        }
+        $context->removeAttribute('style');
     }
 
     /**

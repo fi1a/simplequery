@@ -384,11 +384,19 @@ interface ISimpleQuery extends IMapArrayObject
     /**
      * Установить стиль
      *
-     * @param string|string[] $property
+     * @param string|string[]|null $property
+     * @param string|bool|null $value
      *
      * @return static
      */
-    public function css($property, ?string $value = null);
+    public function css($property = null, $value = null);
+
+    /**
+     * Показать элементы
+     *
+     * @return static
+     */
+    public function show();
 
     /**
      * Установить или вернуть данные

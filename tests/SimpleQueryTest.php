@@ -1124,13 +1124,17 @@ class SimpleQueryTest extends TestCase
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $sq('#article1')->css('background', '#000');
         $this->assertEquals('color: red; background: #000;', $sq('#article1')->attr('style'));
-        $sq('#article1')->css('background', null);
+        $sq('#article1')->css('background', false);
         $this->assertEquals('color: red;', $sq('#article1')->attr('style'));
         $sq('#article1')->css(['color' => 'black']);
         $this->assertEquals('color: black;', $sq('#article1')->attr('style'));
         $sq->css('color', 'black');
         $sq('#article1')->css(['backgroundColor' => 'white']);
         $this->assertEquals('color: black; background-color: white;', $sq('#article1')->attr('style'));
+        $this->assertEquals([
+            'color' => 'black',
+            'backgroundColor' => 'white',
+        ], $sq('#article1')->css());
     }
 
     /**
@@ -1445,5 +1449,17 @@ class SimpleQueryTest extends TestCase
         $sectionArticle = $sq('section > div > article');
         $article = $sq('article');
         $this->assertCount(1, $article->diff($sectionArticle));
+    }
+
+    /**
+     * Показать элемент
+     */
+    public function testShow(): void
+    {
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $article = $sq('.b-some-footer');
+        $this->assertEquals('none', $article->css('display'));
+        $article->show();
+        $this->assertNull($article->css('display'));
     }
 }
