@@ -863,6 +863,53 @@ abstract class ASimpleQuery implements ISimpleQuery
     }
 
     /**
+     * @inheritDoc
+     */
+    public function serializeArray(): array
+    {
+        $values = [];
+
+        if ($this->isEmpty()) {
+            return $values;
+        }
+
+        $inputs = array_merge($this->getArrayCopy(), $this->children(':input')->getArrayCopy());
+        $inputs = $this->factory(
+            $this,
+            $inputs,
+            $this->getFragments()
+        );
+        $inputs = $inputs->filter(':input');
+        foreach ($inputs as $input) {
+            if ($this($input)->is(':disabled')) {
+                continue;
+            }
+            $name = $this($input)->attr('name');
+            if (!$name) {
+                continue;
+            }
+            if (
+                ($this($input)->is(':checkbox') || $this($input)->is(':radio'))
+                && !($this($input)->is(':checked'))
+            ) {
+                continue;
+            }
+            $value = $this($input)->val();
+            if (!is_array($value)) {
+                $value = [$value];
+            }
+            foreach ($value as $val) {
+                $values[] = [
+                    'name' => $name,
+                    'value' => $val,
+                ];
+            }
+        }
+
+        return $values;
+    }
+
+    /**
      * Преобразует строку из "StringHelper" в "string_helper"
      *
      * @param string $value     значение для преобразования

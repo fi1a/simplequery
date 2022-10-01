@@ -1488,4 +1488,46 @@ class SimpleQueryTest extends TestCase
         $this->assertNull($article->eq(1)->css('display'));
         $this->assertEquals('none', $article->eq(0)->css('display'));
     }
+
+    /**
+     * Получить набор элементов формы как массив с именами и значениями.
+     */
+    public function testSerializeArray(): void
+    {
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $serialized = $sq('form')->serializeArray();
+        $this->assertCount(7, $serialized);
+        $this->assertEquals([
+            [
+                'name' => 'form[name3]',
+                'value' => 'Y',
+            ],
+            [
+                'name' => 'form[name6]',
+                'value' => '',
+            ],
+            [
+                'name' => 'form[name8]',
+                'value' => 'pass',
+            ],
+            [
+                'name' => 'form[name9]',
+                'value' => 'Submit',
+            ],
+            [
+                'name' => 'form[name10]',
+                'value' => '1',
+            ],
+            [
+                'name' => 'form[name11][]',
+                'value' => '0',
+            ],
+            [
+                'name' => 'form[name11][]',
+                'value' => '1',
+            ],
+        ], $serialized);
+        $this->assertCount(0, $sq('#article3')->serializeArray());
+        $this->assertCount(0, $sq('#article100500')->serializeArray());
+    }
 }

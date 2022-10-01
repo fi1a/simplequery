@@ -298,6 +298,19 @@ class CompileSelector implements ICompileSelector
             if ($token->getType() === Token::T_CLOSE_ATTRIBUTE) {
                 break;
             }
+            if (
+                !in_array(
+                    $token->getType(),
+                    array_merge(
+                        $operations,
+                        [
+                            Token::T_ATTRIBUTE, Token::T_WHITE_SPACE, Token::T_QUOTE, Token::T_ATTRIBUTE_VALUE,
+                        ]
+                    )
+                )
+            ) {
+                return self::COMPILER_ERROR;
+            }
             if (in_array($token->getType(), $operations)) {
                 if (!$attribute) {
                     return self::COMPILER_ERROR;
@@ -346,6 +359,7 @@ class CompileSelector implements ICompileSelector
                     break;
             }
         }
+
         if ($value === false || !$attribute) {
             return self::COMPILER_ERROR;
         }

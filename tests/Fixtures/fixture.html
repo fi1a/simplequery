@@ -29,17 +29,17 @@
 <footer>
     <article class="b-some-footer" style="display: none">footer article</article>
     <form>
-        <input value="1" disabled type="text">
+        <input name="form[name1]" value="1" disabled type="text">
         <input type="button">
-        <input type="checkbox" checked>
-        <input type="radio">
+        <input name="form[name3]" value="Y" type="checkbox" checked>
+        <input name="form[name4]" value="R" type="radio">
         <input type="reset">
-        <input type="file">
+        <input name="form[name6]" type="file">
         <button></button>
-        <input type="password">
-        <input type="submit">
-        <textarea>1</textarea>
-        <select multiple>
+        <input name="form[name8]" value="pass" type="password">
+        <input name="form[name9]" value="Submit" type="submit">
+        <textarea name="form[name10]">1</textarea>
+        <select name="form[name11][]" multiple>
             <option selected value="0">0</option>
             <option selected value="1">1</option>
         </select>

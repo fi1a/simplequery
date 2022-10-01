@@ -413,6 +413,13 @@ interface ISimpleQuery extends IMapArrayObject
     public function toggle();
 
     /**
+     * Получить набор элементов формы как массив с именами и значениями.
+     *
+     * @return string[]
+     */
+    public function serializeArray(): array;
+
+    /**
      * Установить или вернуть данные
      *
      * @param string|string[] $key
