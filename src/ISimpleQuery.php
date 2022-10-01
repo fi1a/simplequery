@@ -399,6 +399,13 @@ interface ISimpleQuery extends IMapArrayObject
     public function show();
 
     /**
+     * Скрыть элементы
+     *
+     * @return static
+     */
+    public function hide();
+
+    /**
      * Установить или вернуть данные
      *
      * @param string|string[] $key

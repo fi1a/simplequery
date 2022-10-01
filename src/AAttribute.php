@@ -318,6 +318,18 @@ abstract class AAttribute extends AInsertion
     }
 
     /**
+     * @inheritDoc
+     */
+    public function hide()
+    {
+        foreach ($this as $context) {
+            $css = $this->getCssArray($context);
+            $css['display'] = 'none';
+            $this->setCssArray($context, $css);
+        }
+    }
+
+    /**
      * Установить стиль
      *
      * @param mixed $value

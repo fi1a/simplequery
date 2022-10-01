@@ -1462,4 +1462,16 @@ class SimpleQueryTest extends TestCase
         $article->show();
         $this->assertNull($article->css('display'));
     }
+
+    /**
+     * Скрыть элемент
+     */
+    public function testHide(): void
+    {
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $article = $sq('.b-news-list');
+        $this->assertNull($article->css('display'));
+        $article->hide();
+        $this->assertEquals('none', $article->css('display'));
+    }
 }
