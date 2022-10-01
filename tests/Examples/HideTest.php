@@ -15,7 +15,7 @@ class HideTest extends TestCase
     /**
      * Скрыть параграф.
      */
-    public function testEmptySelector(): void
+    public function testHide(): void
     {
         $html = file_get_contents(__DIR__ . '/Fixtures/Hide.html');
         $result = file_get_contents(__DIR__ . '/Fixtures/Hide-result.html');

@@ -15,7 +15,7 @@ class ShowTest extends TestCase
     /**
      * Отобразить скрытый параграф.
      */
-    public function testEmptySelector(): void
+    public function testShow(): void
     {
         $html = file_get_contents(__DIR__ . '/Fixtures/Show.html');
         $result = file_get_contents(__DIR__ . '/Fixtures/Show-result.html');

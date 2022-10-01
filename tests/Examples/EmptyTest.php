@@ -15,7 +15,7 @@ class EmptyTest extends TestCase
     /**
      * Удалите все дочерние узлы элементов из DOM.
      */
-    public function testEmptySelector(): void
+    public function testEmpty(): void
     {
         $html = file_get_contents(__DIR__ . '/Fixtures/Empty.html');
         $result = file_get_contents(__DIR__ . '/Fixtures/Empty-result.html');

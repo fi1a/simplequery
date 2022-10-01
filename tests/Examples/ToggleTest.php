@@ -15,7 +15,7 @@ class ToggleTest extends TestCase
     /**
      * Показать или скрыть выбранные параграфы.
      */
-    public function testEmptySelector(): void
+    public function testToggle(): void
     {
         $html = file_get_contents(__DIR__ . '/Fixtures/Toggle.html');
         $result = file_get_contents(__DIR__ . '/Fixtures/Toggle-result.html');
