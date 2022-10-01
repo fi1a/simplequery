@@ -330,6 +330,22 @@ abstract class AAttribute extends AInsertion
     }
 
     /**
+     * @inheritDoc
+     */
+    public function toggle()
+    {
+        foreach ($this as $context) {
+            $css = $this->getCssArray($context);
+            if (isset($css['display']) && mb_strtolower($css['display']) === 'none') {
+                unset($css['display']);
+            } else {
+                $css['display'] = 'none';
+            }
+            $this->setCssArray($context, $css);
+        }
+    }
+
+    /**
      * Установить стиль
      *
      * @param mixed $value

@@ -1474,4 +1474,18 @@ class SimpleQueryTest extends TestCase
         $article->hide();
         $this->assertEquals('none', $article->css('display'));
     }
+
+    /**
+     * Показать или скрыть выбранные элементы
+     */
+    public function testToggle(): void
+    {
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $article = $sq('.b-news-list, .b-some-footer');
+        $this->assertNull($article->eq(0)->css('display'));
+        $this->assertEquals('none', $article->eq(1)->css('display'));
+        $article->toggle();
+        $this->assertNull($article->eq(1)->css('display'));
+        $this->assertEquals('none', $article->eq(0)->css('display'));
+    }
 }
