@@ -1557,4 +1557,18 @@ class SimpleQueryTest extends TestCase
         $this->assertEquals('', $sq('#article3')->serialize());
         $this->assertEquals('', $sq('#article100500')->serialize());
     }
+
+    /**
+     * Возвращает индекс элемента среди выбранных
+     */
+    public function testIndex(): void
+    {
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $this->assertEquals(2, $sq('.b-news')->index('.b-news.e-last'));
+        $this->assertEquals(0, $sq('.b-news')->index($sq('.b-news.e-first')));
+        $elements = $sq('#article2')->getArrayCopy();
+        $this->assertEquals(1, $sq('.b-news')->index(reset($elements)));
+        $this->assertFalse($sq('.not-exists')->index(reset($elements)));
+        $this->assertFalse($sq('.b-news')->index('h1'));
+    }
 }

@@ -535,6 +535,15 @@ interface ISimpleQuery extends IMapArrayObject
     public function eq(int $index);
 
     /**
+     * Возвращает индекс элемента среди выбранных
+     *
+     * @param string|ISimpleQuery|\DOMNode $selector
+     *
+     * @return int|bool
+     */
+    public function index($selector);
+
+    /**
      * Возвращает первый элемент
      *
      * @return self

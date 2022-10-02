@@ -113,4 +113,29 @@ abstract class AFiltering extends ATreeTraversal
 
         return $this->factory($this, $list, $this->getFragments());
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function index($selector)
+    {
+        if ($this->isEmpty()) {
+            return false;
+        }
+        if (is_string($selector)) {
+            $selector = $this($selector);
+        }
+        if ($selector instanceof ISimpleQuery) {
+            $elements = $selector->getArrayCopy();
+            $selector = reset($elements);
+        }
+
+        foreach ($this as $index => $context) {
+            if ($context === $selector) {
+                return $index;
+            }
+        }
+
+        return false;
+    }
 }
