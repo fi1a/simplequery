@@ -420,6 +420,13 @@ interface ISimpleQuery extends IMapArrayObject
     public function serializeArray(): array;
 
     /**
+     * Получить набор элементов формы в виде вложенного массива
+     *
+     * @return mixed[]
+     */
+    public function serializeNested(): array;
+
+    /**
      * Установить или вернуть данные
      *
      * @param string|string[] $key

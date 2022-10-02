@@ -1496,23 +1496,15 @@ class SimpleQueryTest extends TestCase
     {
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $serialized = $sq('form')->serializeArray();
-        $this->assertCount(7, $serialized);
+        $this->assertCount(5, $serialized);
         $this->assertEquals([
             [
                 'name' => 'form[name3]',
                 'value' => 'Y',
             ],
             [
-                'name' => 'form[name6]',
-                'value' => '',
-            ],
-            [
                 'name' => 'form[name8]',
                 'value' => 'pass',
-            ],
-            [
-                'name' => 'form[name9]',
-                'value' => 'Submit',
             ],
             [
                 'name' => 'form[name10]',
@@ -1529,5 +1521,24 @@ class SimpleQueryTest extends TestCase
         ], $serialized);
         $this->assertCount(0, $sq('#article3')->serializeArray());
         $this->assertCount(0, $sq('#article100500')->serializeArray());
+    }
+
+    /**
+     * Получить набор элементов формы как массив с именами и значениями.
+     */
+    public function testSerializeNested(): void
+    {
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $serialized = $sq('form')->serializeNested();
+        $this->assertEquals([
+            'form' => [
+                'name3' => 'Y',
+                'name8' => 'pass',
+                'name10' => '1',
+                'name11' => ['0', '1'],
+            ],
+        ], $serialized);
+        $this->assertCount(0, $sq('#article3')->serializeNested());
+        $this->assertCount(0, $sq('#article100500')->serializeNested());
     }
 }

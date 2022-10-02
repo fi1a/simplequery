@@ -881,7 +881,13 @@ abstract class ASimpleQuery implements ISimpleQuery
         );
         $inputs = $inputs->filter(':input');
         foreach ($inputs as $input) {
-            if ($this($input)->is(':disabled')) {
+            if (
+                $this($input)->is(':disabled')
+                || $this($input)->is(':button')
+                || $this($input)->is('input[type="submit"]')
+                || $this($input)->is('input[type="button"]')
+                || $this($input)->is('input[type="reset"]')
+            ) {
                 continue;
             }
             $name = $this($input)->attr('name');
@@ -907,6 +913,37 @@ abstract class ASimpleQuery implements ISimpleQuery
         }
 
         return $values;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function serializeNested(): array
+    {
+        $array = [];
+        foreach ($this->serializeArray() as $value) {
+            $explode = array_map(function ($path) {
+                return trim($path, ']');
+            }, explode('[', $value['name']));
+
+            $partOfArray = &$array;
+            foreach ($explode as $path) {
+                if ($path && (!isset($partOfArray[$path]) || is_array($partOfArray[$path]))) {
+                    $partOfArray = &$partOfArray[$path];
+
+                    continue;
+                }
+                if (isset($partOfArray[$path]) && !is_array($partOfArray[$path])) {
+                    $partOfArray[$path] = [$partOfArray[$path]];
+                    $partOfArray = &$partOfArray[$path];
+                }
+                $partOfArray = &$partOfArray[];
+            }
+
+            $partOfArray = $value['value'];
+        }
+
+        return $array;
     }
 
     /**
