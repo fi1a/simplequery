@@ -947,6 +947,14 @@ abstract class ASimpleQuery implements ISimpleQuery
     }
 
     /**
+     * @inheritDoc
+     */
+    public function serialize(): string
+    {
+        return http_build_query($this->serializeNested());
+    }
+
+    /**
      * Преобразует строку из "StringHelper" в "string_helper"
      *
      * @param string $value     значение для преобразования

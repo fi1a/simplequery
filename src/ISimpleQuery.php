@@ -427,6 +427,11 @@ interface ISimpleQuery extends IMapArrayObject
     public function serializeNested(): array;
 
     /**
+     * Получить набор элементов формы в виде строки.
+     */
+    public function serialize(): string;
+
+    /**
      * Установить или вернуть данные
      *
      * @param string|string[] $key

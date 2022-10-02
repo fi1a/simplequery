@@ -1541,4 +1541,20 @@ class SimpleQueryTest extends TestCase
         $this->assertCount(0, $sq('#article3')->serializeNested());
         $this->assertCount(0, $sq('#article100500')->serializeNested());
     }
+
+    /**
+     * ППолучить набор элементов формы в виде строки.
+     */
+    public function testSerialize(): void
+    {
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
+        $serialized = $sq('form')->serialize();
+        $this->assertEquals(
+            'form%5Bname3%5D=Y&form%5Bname8%5D=pass&form%5Bname'
+            . '10%5D=1&form%5Bname11%5D%5B0%5D=0&form%5Bname11%5D%5B1%5D=1',
+            $serialized
+        );
+        $this->assertEquals('', $sq('#article3')->serialize());
+        $this->assertEquals('', $sq('#article100500')->serialize());
+    }
 }
