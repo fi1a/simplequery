@@ -188,7 +188,7 @@ interface ISimpleQuery extends IMapArrayObject
     public function parents($selector = null);
 
     /**
-     * Возврашает все родительские элементы до элемента, удовлетворяющего селектору
+     * Возвращает все родительские элементы до элемента, удовлетворяющего селектору
      *
      * @param ISimpleQuery|string|callable|\DOMNode $selector
      *
