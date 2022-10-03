@@ -571,7 +571,7 @@ interface ISimpleQuery extends IMapArrayObject
     /**
      * Возвращает последний элемент
      *
-     * @return self
+     * @return static
      */
     public function last();
 
@@ -622,4 +622,11 @@ interface ISimpleQuery extends IMapArrayObject
      * Возвращает html документа или общий html наборов
      */
     public function getDocumentHtml(): string;
+
+    /**
+     * Выбрать четные элементы
+     *
+     * @return static
+     */
+    public function even();
 }
