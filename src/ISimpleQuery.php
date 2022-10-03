@@ -629,4 +629,11 @@ interface ISimpleQuery extends IMapArrayObject
      * @return static
      */
     public function even();
+
+    /**
+     * Выбрать нечетные элементы
+     *
+     * @return static
+     */
+    public function odd();
 }
