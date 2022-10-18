@@ -1,4 +1,4 @@
-# PHP библиотека для обхода и манипуляции с HTML-документами
+# Серверная, цепочная, управляемая селекторами CSS3 объектная модель документа (DOM) (современный аналог phpquery)
 
 [![Latest Version][badge-release]][packagist]
 [![Software License][badge-license]][license]
