@@ -1,4 +1,4 @@
-# Серверная, цепочная, управляемая селекторами CSS3 объектная модель документа (DOM) (современный аналог phpquery)
+# PHP HTML DOM Parser управляемый CSS3 селекторами
 
 [![Latest Version][badge-release]][packagist]
 [![Software License][badge-license]][license]
