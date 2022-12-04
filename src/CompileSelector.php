@@ -11,7 +11,7 @@ use Fi1a\Tokenizer\ITokenizer;
 /**
  * Компилятор CSS3 селекторов
  */
-class CompileSelector implements ICompileSelector
+class CompileSelector implements CompileSelectorInterface
 {
     public const COMPILER_ERROR = false;
 
