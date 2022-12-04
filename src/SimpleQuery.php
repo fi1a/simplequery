@@ -10,7 +10,7 @@ use DOMText;
 /**
  * Класс SimpleQuery
  */
-class SimpleQuery extends AFiltering
+class SimpleQuery extends AbstractFiltering
 {
     /**
      * @inheritDoc
