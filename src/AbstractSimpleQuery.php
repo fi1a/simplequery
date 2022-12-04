@@ -24,7 +24,7 @@ use const ENT_QUOTES;
 /**
  * Абстрактный класс SimpleQuery
  */
-abstract class ASimpleQuery implements ISimpleQuery
+abstract class AbstractSimpleQuery implements ISimpleQuery
 {
     use ArrayObjectTrait;
     use MapArrayObjectTrait;
