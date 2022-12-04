@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Fi1a\SimpleQuery;
 
 use DOMDocument;
-use Fi1a\Collection\DataType\IArrayObject;
-use Fi1a\Collection\DataType\IMapArrayObject;
+use Fi1a\Collection\DataType\ArrayObjectInterface;
+use Fi1a\Collection\DataType\MapArrayObjectInterface;
 
 /**
  * Интерфейс SimpleQuery
  */
-interface ISimpleQuery extends IMapArrayObject
+interface ISimpleQuery extends MapArrayObjectInterface
 {
     /**
      * Конструктор
@@ -606,7 +606,7 @@ interface ISimpleQuery extends IMapArrayObject
      *
      * @return self
      */
-    public function setVariables(IArrayObject $variables);
+    public function setVariables(ArrayObjectInterface $variables);
 
     /**
      * Удаляет переменную
@@ -616,7 +616,7 @@ interface ISimpleQuery extends IMapArrayObject
     /**
      * Возвращает все переменные
      */
-    public function getVariables(): IArrayObject;
+    public function getVariables(): ArrayObjectInterface;
 
     /**
      * Возвращает html документа или общий html наборов

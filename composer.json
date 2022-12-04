@@ -19,9 +19,9 @@
     "ext-json": "*",
     "ext-dom": "*",
     "ext-libxml": "*",
-    "fi1a/tokenizer": "~1.1",
-    "fi1a/collection": "~1.2",
-    "fi1a/format": "~1.1"
+    "fi1a/tokenizer": "^1.1",
+    "fi1a/collection": "^2.0",
+    "fi1a/format": "^2.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.3",

@@ -10,9 +10,9 @@ use DOMDocumentFragment;
 use DOMNode;
 use DOMXPath;
 use Fi1a\Collection\Collection;
-use Fi1a\Collection\DataType\IArrayObject;
-use Fi1a\Collection\DataType\TArrayObject;
-use Fi1a\Collection\DataType\TMapArrayObject;
+use Fi1a\Collection\DataType\ArrayObjectInterface;
+use Fi1a\Collection\DataType\ArrayObjectTrait;
+use Fi1a\Collection\DataType\MapArrayObjectTrait;
 use Fi1a\Format\Formatter;
 use Fi1a\SimpleQuery\Exception\ErrorException;
 use Fi1a\SimpleQuery\Exception\LogicException;
@@ -26,8 +26,8 @@ use const ENT_QUOTES;
  */
 abstract class ASimpleQuery implements ISimpleQuery
 {
-    use TArrayObject;
-    use TMapArrayObject;
+    use ArrayObjectTrait;
+    use MapArrayObjectTrait;
 
     /**
      * @var array
@@ -559,7 +559,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function setVariables(IArrayObject $variables)
+    public function setVariables(ArrayObjectInterface $variables)
     {
         $this->variables = $variables;
 
@@ -582,7 +582,7 @@ abstract class ASimpleQuery implements ISimpleQuery
     /**
      * @inheritDoc
      */
-    public function getVariables(): IArrayObject
+    public function getVariables(): ArrayObjectInterface
     {
         return $this->variables;
     }
