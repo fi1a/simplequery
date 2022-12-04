@@ -14,7 +14,7 @@ use const ENT_QUOTES;
 /**
  * Работа с элементами
  */
-abstract class AInsertion extends ASimpleQuery
+abstract class AbstractInsertion extends ASimpleQuery
 {
     /**
      * @inheritDoc

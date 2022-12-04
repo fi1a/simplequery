@@ -9,7 +9,7 @@ use DOMElement;
 /**
  * Методы для атрибута класса
  */
-abstract class AbstractAttribute extends AInsertion
+abstract class AbstractAttribute extends AbstractInsertion
 {
     /**
      * @inheritDoc
