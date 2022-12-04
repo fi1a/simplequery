@@ -7,7 +7,7 @@ namespace Fi1a\SimpleQuery;
 /**
  * Абстрактный класс с методами фильтрации
  */
-abstract class AFiltering extends ATreeTraversal
+abstract class AbstractFiltering extends AbstractTreeTraversal
 {
     /**
      * @inheritDoc
@@ -125,7 +125,7 @@ abstract class AFiltering extends ATreeTraversal
         if (is_string($selector)) {
             $selector = $this($selector);
         }
-        if ($selector instanceof ISimpleQuery) {
+        if ($selector instanceof SimpleQueryInterface) {
             $elements = $selector->getArrayCopy();
             $selector = reset($elements);
         }

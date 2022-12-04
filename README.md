@@ -14,7 +14,7 @@
 Установить этот пакет можно как зависимость, используя Composer.
 
 ``` bash
-composer require fi1a/simplequery ~1.1
+composer require fi1a/simplequery
 ```
 
 ## Краткий обзор

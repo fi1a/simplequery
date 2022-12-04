@@ -10,7 +10,7 @@ use DOMText;
 /**
  * Абстрактный класс дерева
  */
-abstract class ATreeTraversal extends AManipulation
+abstract class AbstractTreeTraversal extends AbstractManipulation
 {
     /**
      * @inheritDoc

@@ -14,7 +14,7 @@ use const ENT_QUOTES;
 /**
  * Работа с элементами
  */
-abstract class AInsertion extends ASimpleQuery
+abstract class AbstractInsertion extends AbstractSimpleQuery
 {
     /**
      * @inheritDoc
@@ -257,7 +257,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * Возвращает экземпляр класса SimpleQuery на основе селектора или элемента
      *
-     * @param string|ISimpleQuery|\DOMNode $selector
+     * @param string|SimpleQueryInterface|\DOMNode $selector
      *
      * @return static
      */
@@ -395,7 +395,7 @@ abstract class AInsertion extends ASimpleQuery
     /**
      * Устанавливает html для контекстов
      *
-     * @param string|ISimpleQuery $html
+     * @param string|SimpleQueryInterface $html
      *
      * @return self
      */

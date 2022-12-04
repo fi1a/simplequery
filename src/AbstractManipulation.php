@@ -9,7 +9,7 @@ use DOMText;
 /**
  * Абстрактный класс SimpleQuery
  */
-abstract class AManipulation extends AAttribute
+abstract class AbstractManipulation extends AbstractAttribute
 {
     /**
      * @inheritDoc

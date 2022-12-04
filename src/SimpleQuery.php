@@ -10,7 +10,7 @@ use DOMText;
 /**
  * Класс SimpleQuery
  */
-class SimpleQuery extends AFiltering
+class SimpleQuery extends AbstractFiltering
 {
     /**
      * @inheritDoc
@@ -229,7 +229,7 @@ class SimpleQuery extends AFiltering
     /**
      * @inheritDoc
      */
-    public function contents(): ISimpleQuery
+    public function contents(): SimpleQueryInterface
     {
         $list = [];
         foreach ($this as $context) {

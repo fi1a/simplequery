@@ -7,7 +7,7 @@ namespace Fi1a\SimpleQuery;
 /**
  * Интерфейс компилятора селекторов
  */
-interface ICompileSelector
+interface CompileSelectorInterface
 {
     /**
      * Компилирует CSS3 селекторы в XPath

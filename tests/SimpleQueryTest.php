@@ -23,10 +23,10 @@ class SimpleQueryTest extends TestCase
     {
         $sq = new SimpleQuery();
         /**
-         * @var $string ISimpleQuery
-         * @var $array  ISimpleQuery
-         * @var $short  ISimpleQuery
-         * @var $new    ISimpleQuery
+         * @var $string SimpleQueryInterface
+         * @var $array  SimpleQueryInterface
+         * @var $short  SimpleQueryInterface
+         * @var $new    SimpleQueryInterface
          */
         $string = $sq('<div>string</div>');
         $array = $sq([
@@ -53,8 +53,8 @@ class SimpleQueryTest extends TestCase
     {
         $sq = new SimpleQuery();
         /**
-         * @var $string ISimpleQuery
-         * @var $new    ISimpleQuery
+         * @var $string SimpleQuery
+         * @var $new    SimpleQuery
          */
         $sq->html('<div/>');
         $this->assertEquals('<div></div>', $sq->html());
@@ -79,8 +79,8 @@ class SimpleQueryTest extends TestCase
     {
         $sq = new SimpleQuery();
         /**
-         * @var $article ISimpleQuery
-         * @var $date    ISimpleQuery
+         * @var $article SimpleQuery
+         * @var $date    SimpleQuery
          */
         $article = $sq('<article class="b-article"/>');
         $date = $sq('<div class="e-date">12.12.2016</div>');
@@ -130,8 +130,8 @@ class SimpleQueryTest extends TestCase
     public function testArray(): void
     {
         /**
-         * @var $div  ISimpleQuery
-         * @var $meta ISimpleQuery
+         * @var $div  SimpleQuery
+         * @var $meta SimpleQuery
          */
         $sq = new SimpleQuery();
         $div = $sq(['__tag' => 'div', '__html' => 'div',]);
@@ -715,7 +715,7 @@ class SimpleQueryTest extends TestCase
     public function testSelectorFilter(): void
     {
         /**
-         * @var $input ISimpleQuery
+         * @var $input SimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $input = $sq(':input');
@@ -741,8 +741,8 @@ class SimpleQueryTest extends TestCase
     public function testElementFilter(): void
     {
         /**
-         * @var $input ISimpleQuery
-         * @var $text  ISimpleQuery
+         * @var $input SimpleQuery
+         * @var $text  SimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $input = $sq(':input');
@@ -785,7 +785,7 @@ class SimpleQueryTest extends TestCase
     public function testClass(): void
     {
         /**
-         * @var $article ISimpleQuery
+         * @var $article SimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $sq->removeClass('class');
@@ -1031,8 +1031,8 @@ class SimpleQueryTest extends TestCase
     public function testPrepend(): void
     {
         /**
-         * @var $date    ISimpleQuery
-         * @var $article ISimpleQuery
+         * @var $date    SimpleQuery
+         * @var $article SimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $article = $sq('div article');
@@ -1069,7 +1069,7 @@ class SimpleQueryTest extends TestCase
     public function testText(): void
     {
         /**
-         * @var $date ISimpleQuery
+         * @var $date SimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $date = $sq('.b-news .e-date:first');
@@ -1143,7 +1143,7 @@ class SimpleQueryTest extends TestCase
     public function testData(): void
     {
         /**
-         * @var $div ISimpleQuery
+         * @var $div SimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $div = $sq('[data-fixture="789"]');
@@ -1235,7 +1235,7 @@ class SimpleQueryTest extends TestCase
     public function testDetach(): void
     {
         /**
-         * @var $articles ISimpleQuery
+         * @var $articles SimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $articles = $sq('section > div > article')->detach('article');
@@ -1403,7 +1403,7 @@ class SimpleQueryTest extends TestCase
     public function testVariables(): void
     {
         /**
-         * @var $div \Fi1a\SimpleQuery\ISimpleQuery
+         * @var $div \Fi1a\SimpleQuery\SimpleQuery
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $sq->setVariables(new ArrayObject([
