@@ -11,7 +11,7 @@ use Fi1a\Collection\DataType\MapArrayObjectInterface;
 /**
  * Интерфейс SimpleQuery
  */
-interface ISimpleQuery extends MapArrayObjectInterface
+interface SimpleQueryInterface extends MapArrayObjectInterface
 {
     /**
      * Конструктор
@@ -68,7 +68,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Добавляет элементы в текущий контекст
      *
-     * @param string|ISimpleQuery|\DOMNode $selector
+     * @param string|SimpleQueryInterface|\DOMNode $selector
      *
      * @return static
      */
@@ -77,7 +77,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Добавить предыдущий набор элементов в стек к текущему набору
      *
-     * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode|null $selector
      *
      * @return static
      */
@@ -93,7 +93,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Фильтрация
      *
-     * @param ISimpleQuery|string|callable|\DOMNode $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode $selector
      *
      * @return static
      */
@@ -136,7 +136,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
      * Для каждого элемента, получить первый элемент,
      * соответствующий селектору для себя и всех родителей
      *
-     * @param ISimpleQuery|string|callable|\DOMNode $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode $selector
      *
      * @return static
      */
@@ -145,7 +145,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Следующий элемент
      *
-     * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode|null $selector
      *
      * @return static
      */
@@ -154,7 +154,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Все следующие элементы
      *
-     * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode|null $selector
      *
      * @return static
      */
@@ -163,7 +163,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Все следующие элементы до элемента, удовлетворяющего селектору
      *
-     * @param ISimpleQuery|string|callable|\DOMNode $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode $selector
      *
      * @return static
      */
@@ -172,7 +172,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Возврашает родительский элемент
      *
-     * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode|null $selector
      *
      * @return static
      */
@@ -181,7 +181,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Возврашает все родительские элементы
      *
-     * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode|null $selector
      *
      * @return static
      */
@@ -190,7 +190,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Возвращает все родительские элементы до элемента, удовлетворяющего селектору
      *
-     * @param ISimpleQuery|string|callable|\DOMNode $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode $selector
      *
      * @return static
      */
@@ -199,7 +199,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Предыдущий элемент
      *
-     * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode|null $selector
      *
      * @return static
      */
@@ -208,7 +208,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Все предыдущие элементы
      *
-     * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode|null $selector
      *
      * @return static
      */
@@ -217,7 +217,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Все предыдущие элементы до элемента, удовлетворяющего селектору
      *
-     * @param ISimpleQuery|string|callable|\DOMNode $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode $selector
      *
      * @return static
      */
@@ -226,7 +226,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Соседние элементы
      *
-     * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode|null $selector
      *
      * @return static
      */
@@ -235,7 +235,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Добавить после элементов
      *
-     * @param string|mixed[]|ISimpleQuery|\DOMNode $html
+     * @param string|mixed[]|SimpleQueryInterface|\DOMNode $html
      *
      * @return static
      */
@@ -244,7 +244,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Добавить до элементов
      *
-     * @param string|mixed[]|ISimpleQuery|\DOMNode $html
+     * @param string|mixed[]|SimpleQueryInterface|\DOMNode $html
      *
      * @return static
      */
@@ -253,7 +253,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Добавить после элементов
      *
-     * @param string|ISimpleQuery|\DOMNode $selector
+     * @param string|SimpleQueryInterface|\DOMNode $selector
      *
      * @return static
      */
@@ -262,7 +262,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Добавить до элементов
      *
-     * @param string|ISimpleQuery|\DOMNode $selector
+     * @param string|SimpleQueryInterface|\DOMNode $selector
      *
      * @return static
      */
@@ -271,7 +271,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Возвращает дочерние элементы
      *
-     * @param ISimpleQuery|string|callable|\DOMNode $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode $selector
      *
      * @return static
      */
@@ -287,7 +287,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Убрать элементы, соответствующие селектору
      *
-     * @param ISimpleQuery|string|callable|\DOMNode $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode $selector
      *
      * @return static
      */
@@ -304,7 +304,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
      * $sq('<div/>').append(['__tag' => 'div', '__html' => 'html',]);
      * $sq('<div/>').append($pq('<div/>'));
      *
-     * @param string|mixed[]|ISimpleQuery|\DOMNode $html
+     * @param string|mixed[]|SimpleQueryInterface|\DOMNode $html
      *
      * @return self
      */
@@ -313,7 +313,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Добавление элемента в переданный
      *
-     * @param string|ISimpleQuery|\DOMNode $selector
+     * @param string|SimpleQueryInterface|\DOMNode $selector
      *
      * @return static
      */
@@ -322,7 +322,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Возвращает или устанавливает html
      *
-     * @param string|ISimpleQuery|mixed[]|null $html
+     * @param string|SimpleQueryInterface|mixed[]|null $html
      *
      * @return string|static
      */
@@ -338,7 +338,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Добавление элемента в начало
      *
-     * @param string|mixed[]|ISimpleQuery|\DOMNode $html
+     * @param string|mixed[]|SimpleQueryInterface|\DOMNode $html
      *
      * @return static
      */
@@ -347,7 +347,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Добавление элемента в начало переданного
      *
-     * @param string|ISimpleQuery|\DOMNode $selector
+     * @param string|SimpleQueryInterface|\DOMNode $selector
      *
      * @return static
      */
@@ -453,7 +453,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Обернуть структуру вокруг каждого элемента
      *
-     * @param string|ISimpleQuery|\DOMNode $html
+     * @param string|SimpleQueryInterface|\DOMNode $html
      *
      * @return static
      */
@@ -469,7 +469,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Обернуть структуру вокруг всех элементов
      *
-     * @param string|ISimpleQuery|\DOMNode $html
+     * @param string|SimpleQueryInterface|\DOMNode $html
      *
      * @return static
      */
@@ -478,7 +478,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Обернуть структуру вокруг содержимого элементов
      *
-     * @param string|ISimpleQuery|\DOMNode $html
+     * @param string|SimpleQueryInterface|\DOMNode $html
      *
      * @return static
      */
@@ -487,7 +487,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Удаляет элементы
      *
-     * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode|null $selector
      *
      * @return static
      */
@@ -496,7 +496,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Удаляет элементы
      *
-     * @param ISimpleQuery|string|callable|\DOMNode|null $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode|null $selector
      *
      * @return static
      */
@@ -512,7 +512,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Заменяет
      *
-     * @param string|ISimpleQuery|\DOMNode $selector
+     * @param string|SimpleQueryInterface|\DOMNode $selector
      *
      * @return static
      */
@@ -521,7 +521,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Заменить каждый элемент с помощью нового содержимого
      *
-     * @param string|ISimpleQuery|\DOMNode $html
+     * @param string|SimpleQueryInterface|\DOMNode $html
      *
      * @return static
      */
@@ -537,7 +537,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Возвращает индекс элемента среди выбранных
      *
-     * @param string|ISimpleQuery|\DOMNode $selector
+     * @param string|SimpleQueryInterface|\DOMNode $selector
      *
      * @return int|bool
      */
@@ -553,7 +553,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Имеет дочерние элементы, удовлетвряющие селектору
      *
-     * @param ISimpleQuery|string|callable|\DOMNode $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode $selector
      *
      * @return static
      */
@@ -562,7 +562,7 @@ interface ISimpleQuery extends MapArrayObjectInterface
     /**
      * Проверяет на соответствие селектору
      *
-     * @param ISimpleQuery|string|callable|\DOMNode $selector
+     * @param SimpleQueryInterface|string|callable|\DOMNode $selector
      *
      * @SuppressWarnings(PHPMD.ShortMethodName)
      */

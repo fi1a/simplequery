@@ -125,7 +125,7 @@ abstract class AbstractFiltering extends AbstractTreeTraversal
         if (is_string($selector)) {
             $selector = $this($selector);
         }
-        if ($selector instanceof ISimpleQuery) {
+        if ($selector instanceof SimpleQueryInterface) {
             $elements = $selector->getArrayCopy();
             $selector = reset($elements);
         }

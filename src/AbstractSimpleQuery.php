@@ -24,7 +24,7 @@ use const ENT_QUOTES;
 /**
  * Абстрактный класс SimpleQuery
  */
-abstract class AbstractSimpleQuery implements ISimpleQuery
+abstract class AbstractSimpleQuery implements SimpleQueryInterface
 {
     use ArrayObjectTrait;
     use MapArrayObjectTrait;
@@ -55,12 +55,12 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
     private $fragments = [];
 
     /**
-     * @var ISimpleQuery|null
+     * @var SimpleQueryInterface|null
      */
     private $source = null;
 
     /**
-     * @var ISimpleQuery|null
+     * @var SimpleQueryInterface|null
      */
     private $end = null;
 
@@ -167,8 +167,8 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
     /**
      * Возвращает переданный контекст относительно документа
      *
-     * @param string|ISimpleQuery $selector
-     * @param mixed[]             $contexts
+     * @param string|SimpleQueryInterface $selector
+     * @param mixed[]                     $contexts
      *
      * @return static
      */
@@ -177,7 +177,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
         if ($selector instanceof DOMNode) {
             return $this->factory($this, [$selector], $this->getFragments());
         }
-        if ($selector instanceof ISimpleQuery) {
+        if ($selector instanceof SimpleQueryInterface) {
             return clone $selector;
         }
         if (is_array($selector)) {
@@ -215,7 +215,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
     /**
      * Выполняет xpath запрос для контекста
      *
-     * @param mixed[]|ISimpleQuery $contexts
+     * @param mixed[]|SimpleQueryInterface $contexts
      *
      * @return DOMNode[]
      */
@@ -276,7 +276,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
     /**
      * Создание на основе html
      */
-    protected function createFromHtml(ISimpleQuery $sqInstance, string $html): ISimpleQuery
+    protected function createFromHtml(SimpleQueryInterface $sqInstance, string $html): SimpleQueryInterface
     {
         $fragment = $sqInstance->getDomDocument()->createDocumentFragment();
         if ($fragment->appendXML($html) === false) {
@@ -391,7 +391,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
     }
 
     /**
-     * @param string|mixed[]|ISimpleQuery|\DOMNode $html
+     * @param string|mixed[]|SimpleQueryInterface|\DOMNode $html
      *
      * @return static
      */
@@ -443,12 +443,12 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
      *
      * @return static
      */
-    protected function factory(ISimpleQuery $source, array $contexts, array $fragments = [])
+    protected function factory(SimpleQueryInterface $source, array $contexts, array $fragments = [])
     {
         $instance = new static($source->getDomDocument(), $source->getEncoding());
         $instance->exchangeArray($contexts);
         $func = Closure::bind(
-            function (ISimpleQuery $source, $end, array $fragments = []) {
+            function (SimpleQueryInterface $source, $end, array $fragments = []) {
                 $this->setFragments($fragments);
                 $this->setSource($source);
                 $this->setEnd($end);
@@ -489,7 +489,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
     /**
      * Вернуть предыдущий экземпляр класса
      */
-    protected function getSource(): ?ISimpleQuery
+    protected function getSource(): ?SimpleQueryInterface
     {
         return $this->source;
     }
@@ -499,7 +499,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
      *
      * @return self
      */
-    protected function setSource(?ISimpleQuery $source = null)
+    protected function setSource(?SimpleQueryInterface $source = null)
     {
         $this->source = $source;
 
@@ -509,7 +509,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
     /**
      * Вернуть экземпляр класса для метода end
      */
-    protected function getEnd(): ?ISimpleQuery
+    protected function getEnd(): ?SimpleQueryInterface
     {
         return $this->end;
     }
@@ -519,7 +519,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
      *
      * @return $this
      */
-    protected function setEnd(?ISimpleQuery $end): self
+    protected function setEnd(?SimpleQueryInterface $end): self
     {
         $this->end = $end;
 
@@ -590,10 +590,10 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
     /**
      * Установить экземпляр класса для метода end
      */
-    protected function setEndClosure(ISimpleQuery $instance, ISimpleQuery $end): void
+    protected function setEndClosure(SimpleQueryInterface $instance, SimpleQueryInterface $end): void
     {
         $func = Closure::bind(
-            function (ISimpleQuery $end) {
+            function (SimpleQueryInterface $end) {
                 $this->setEnd($end);
             },
             $instance,
@@ -605,10 +605,10 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
     /**
      * Устанавливает экземпляр класса для метода addBack
      */
-    protected function setSourceClosure(ISimpleQuery $instance, ISimpleQuery $source): void
+    protected function setSourceClosure(SimpleQueryInterface $instance, SimpleQueryInterface $source): void
     {
         $func = Closure::bind(
-            function (ISimpleQuery $source) {
+            function (SimpleQueryInterface $source) {
                 $this->setSource($source);
             },
             $instance,
@@ -620,7 +620,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
     /**
      * Возвращает экземпляр класса для метода end
      */
-    protected function getEndClosure(ISimpleQuery $instance): ?ISimpleQuery
+    protected function getEndClosure(SimpleQueryInterface $instance): ?SimpleQueryInterface
     {
         $func = Closure::bind(
             function () {
@@ -638,7 +638,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
      *
      * @return \DOMDocumentFragment[]
      */
-    protected function getFragmentsClosure(ISimpleQuery $instance): array
+    protected function getFragmentsClosure(SimpleQueryInterface $instance): array
     {
         $getFragments = Closure::bind(
             function () {
@@ -718,7 +718,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
      */
     public function filter($selector)
     {
-        if (is_callable($selector) && !($selector instanceof ISimpleQuery)) {
+        if (is_callable($selector) && !($selector instanceof SimpleQueryInterface)) {
             return $this->callbackFilter($selector);
         }
         if (is_string($selector)) {
@@ -728,7 +728,7 @@ abstract class AbstractSimpleQuery implements ISimpleQuery
         if ($selector instanceof DOMNode) {
             $filter = [$selector];
         }
-        if ($selector instanceof ISimpleQuery) {
+        if ($selector instanceof SimpleQueryInterface) {
             $filter = $selector->getArrayCopy();
         }
 

@@ -257,7 +257,7 @@ abstract class AbstractInsertion extends AbstractSimpleQuery
     /**
      * Возвращает экземпляр класса SimpleQuery на основе селектора или элемента
      *
-     * @param string|ISimpleQuery|\DOMNode $selector
+     * @param string|SimpleQueryInterface|\DOMNode $selector
      *
      * @return static
      */
@@ -395,7 +395,7 @@ abstract class AbstractInsertion extends AbstractSimpleQuery
     /**
      * Устанавливает html для контекстов
      *
-     * @param string|ISimpleQuery $html
+     * @param string|SimpleQueryInterface $html
      *
      * @return self
      */

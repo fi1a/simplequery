@@ -229,7 +229,7 @@ class SimpleQuery extends AbstractFiltering
     /**
      * @inheritDoc
      */
-    public function contents(): ISimpleQuery
+    public function contents(): SimpleQueryInterface
     {
         $list = [];
         foreach ($this as $context) {

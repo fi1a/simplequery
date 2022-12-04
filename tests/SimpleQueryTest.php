@@ -1403,7 +1403,7 @@ class SimpleQueryTest extends TestCase
     public function testVariables(): void
     {
         /**
-         * @var $div \Fi1a\SimpleQuery\ISimpleQuery
+         * @var $div \Fi1a\SimpleQuery\SimpleQueryInterface
          */
         $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'));
         $sq->setVariables(new ArrayObject([
