@@ -7,7 +7,7 @@ namespace Fi1a\SimpleQuery;
 /**
  * Абстрактный класс с методами фильтрации
  */
-abstract class AbstractFiltering extends ATreeTraversal
+abstract class AbstractFiltering extends AbstractTreeTraversal
 {
     /**
      * @inheritDoc
