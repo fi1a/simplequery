@@ -21,6 +21,6 @@ class SetVariableTest extends TestCase
         $sq = new SimpleQuery($html);
         $sq->setVariable('news', 'body > .content > .news');
         $sq->setVariable('title', 'h1');
-        $this->assertEquals('News title', $sq('{{news}} > {{title}}')->text());
+        $this->assertEquals('News title', $sq('{{news|unescape}} > {{title}}')->text());
     }
 }
