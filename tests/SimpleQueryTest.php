@@ -1424,8 +1424,8 @@ class SimpleQueryTest extends TestCase
             $sq->getVariables()->getArrayCopy()
         );
         $div = $sq('div');
-        $this->assertEquals('descendant-or-self::section/div/article', $sq->compile('{{article}}'));
-        $this->assertEquals('descendant-or-self::section/div/article', $div->compile('{{article}}'));
+        $this->assertEquals('descendant-or-self::section/div/article', $sq->compile('{{article|unescape}}'));
+        $this->assertEquals('descendant-or-self::section/div/article', $div->compile('{{article|unescape}}'));
         $div->setVariable('new', 'div');
         $this->assertTrue($sq->hasVariable('new'));
     }
