@@ -5,6 +5,7 @@
 [![PHP Version][badge-php]][php]
 ![Coverage Status][badge-coverage]
 [![Total Downloads][badge-downloads]][downloads]
+[![Support mail][badge-mail]][mail]
 
 Серверная, цепочная, управляемая селекторами CSS3 объектная модель документа (DOM), похожая на библиотеку jQuery.
 Значительно упрощает такие вещи, как обход и манипуляции с HTML-документами.
@@ -49,8 +50,10 @@ echo (string) $sq;
 [badge-php]: https://img.shields.io/packagist/php-v/fi1a/simplequery?style=flat-square
 [badge-coverage]: https://img.shields.io/badge/coverage-100%25-green
 [badge-downloads]: https://img.shields.io/packagist/dt/fi1a/simplequery.svg?style=flat-square&colorB=mediumvioletred
+[badge-mail]: https://img.shields.io/badge/mail-support%40fi1a.ru-brightgreen
 
 [packagist]: https://packagist.org/packages/fi1a/simplequery
 [license]: https://github.com/fi1a/simplequery/blob/master/LICENSE
 [php]: https://php.net
 [downloads]: https://packagist.org/packages/fi1a/simplequery
+[mail]: mailto:support@fi1a.ru
