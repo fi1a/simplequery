@@ -699,7 +699,9 @@ abstract class AbstractSimpleQuery implements SimpleQueryInterface
      */
     public function compile(string $selector)
     {
-        return CompileSelector::compile(Formatter::format($selector, $this->getVariables()->getArrayCopy()));
+        return CompileSelector::compile(
+            Formatter::format($selector, $this->getVariables()->getArrayCopy(), [], false)
+        );
     }
 
     /**
