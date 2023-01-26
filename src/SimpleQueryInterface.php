@@ -16,7 +16,7 @@ interface SimpleQueryInterface extends MapArrayObjectInterface
     /**
      * Конструктор
      *
-     * @param null   $document
+     * @param mixed $document
      */
     public function __construct($document = null, string $encoding = 'UTF-8');
 
