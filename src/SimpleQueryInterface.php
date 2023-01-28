@@ -54,9 +54,11 @@ interface SimpleQueryInterface extends MapArrayObjectInterface
      * $sq('<div/>');
      * $sq(['__tag' => 'div', '__html' => 'html',]);
      *
+     * @param string|SimpleQueryInterface|\DOMNode|array<int, string> $selector
+     *
      * @return static
      */
-    public function __invoke();
+    public function __invoke($selector);
 
     /**
      * Возвращает скомпилированный XPath на основе CSS3 селектора
@@ -357,7 +359,7 @@ interface SimpleQueryInterface extends MapArrayObjectInterface
      * Возвращает или устанавливает значение атрибута
      *
      * @param string|string[] $attribute
-     * @param null         $value
+     * @param mixed|null $value
      *
      * @return string|static|null
      */
@@ -365,8 +367,6 @@ interface SimpleQueryInterface extends MapArrayObjectInterface
 
     /**
      * Удаляет атрибут
-     *
-     * @param $attribute
      *
      * @return static
      */
@@ -546,7 +546,7 @@ interface SimpleQueryInterface extends MapArrayObjectInterface
     /**
      * Возвращает первый элемент
      *
-     * @return self
+     * @return static
      */
     public function first();
 
@@ -585,7 +585,7 @@ interface SimpleQueryInterface extends MapArrayObjectInterface
     /**
      * Устанавливает переменную
      *
-     * @return self
+     * @return static
      */
     public function setVariable(string $name, string $selector);
 
@@ -604,7 +604,7 @@ interface SimpleQueryInterface extends MapArrayObjectInterface
     /**
      * Добавляет переменные
      *
-     * @return self
+     * @return static
      */
     public function setVariables(ArrayObjectInterface $variables);
 
