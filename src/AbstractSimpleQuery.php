@@ -156,9 +156,9 @@ abstract class AbstractSimpleQuery implements SimpleQueryInterface
     /**
      * @inheritDoc
      */
-    public function __invoke()
+    public function __invoke($selector)
     {
-        $instance = $this->getArgument(func_get_arg(0), [$this->getDomDocument()->documentElement]);
+        $instance = $this->getArgument($selector, [$this->getDomDocument()->documentElement]);
         $this->setEndClosure($instance, $instance);
 
         return $instance;
