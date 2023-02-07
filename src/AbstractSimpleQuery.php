@@ -42,12 +42,12 @@ abstract class AbstractSimpleQuery implements SimpleQueryInterface
     /**
      * @var \DOMDocument
      */
-    private $domDocument = null;
+    private $domDocument;
 
     /**
      * @var \DOMXPath
      */
-    private $xpath = null;
+    private $xpath;
 
     /**
      * @var \DOMDocumentFragment[]
@@ -57,17 +57,17 @@ abstract class AbstractSimpleQuery implements SimpleQueryInterface
     /**
      * @var SimpleQueryInterface|null
      */
-    private $source = null;
+    private $source;
 
     /**
      * @var SimpleQueryInterface|null
      */
-    private $end = null;
+    private $end;
 
     /**
      * @var \tidy
      */
-    private $tidy = null;
+    private $tidy;
 
     /**
      * @inheritDoc
@@ -88,6 +88,7 @@ abstract class AbstractSimpleQuery implements SimpleQueryInterface
         }
         libxml_use_internal_errors(true);
         $dom = $this->getDomDocument();
+        $document = mb_convert_encoding($document, 'HTML-ENTITIES', $this->getEncoding());
         $dom->loadHTML($document);
         $this->setDomDocument($dom);
         libxml_clear_errors();
