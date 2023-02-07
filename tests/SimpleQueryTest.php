@@ -73,6 +73,19 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
+     * Тестирование html
+     */
+    public function testEncoding(): void
+    {
+        $sq = new SimpleQuery(file_get_contents(__DIR__ . '/Fixtures/fixture.html'), 'UTF-8');
+        $html = (string) $sq('.b-news:first');
+        $sq = new SimpleQuery($html, 'UTF-8');
+        $this->assertEquals('Новость 1', $sq('h1')->html());
+        $sq('h1')->html($sq('h1')->html());
+        $this->assertEquals('Новость 1', $sq('h1')->html());
+    }
+
+    /**
      * Тестирование добавления
      */
     public function testAppend(): void
