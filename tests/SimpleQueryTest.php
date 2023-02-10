@@ -86,6 +86,39 @@ class SimpleQueryTest extends TestCase
     }
 
     /**
+     * Тестирование html
+     */
+    public function testEncodingWin1251(): void
+    {
+        $sq = new SimpleQuery(
+            iconv(
+                'UTF-8',
+                'WINDOWS-1251',
+                file_get_contents(__DIR__ . '/Fixtures/fixture-win1251.html')
+            ),
+            'WINDOWS-1251'
+        );
+        $html = (string) $sq('.b-news:first');
+        $sq = new SimpleQuery(
+            iconv(
+                'UTF-8',
+                'WINDOWS-1251',
+                $html
+            ),
+            'WINDOWS-1251'
+        );
+        $this->assertEquals(
+            'Новость 1',
+            $sq('h1')->html()
+        );
+        $sq('h1')->html($sq('h1')->html());
+        $this->assertEquals(
+            'Новость 1',
+            $sq('h1')->html()
+        );
+    }
+
+    /**
      * Тестирование добавления
      */
     public function testAppend(): void
@@ -119,14 +152,14 @@ class SimpleQueryTest extends TestCase
         );
         $sq->xpath('descendant-or-self::body')->append($article);
         $this->assertEquals(
-            '<head></head>'
+            '<head><meta charset="UTF-8"></head>'
             . '<body><article class="b-article"><div class="e-date">12.12.2017</div>'
             . '<div class="e-date">12.11.2016</div>'
             . '<div class="e-date">12.10.2016</div></article></body>',
             $sq->html()
         );
         $this->assertEquals(
-            '<!DOCTYPE html>' . "\n" . '<html><head></head>'
+            '<!DOCTYPE html>' . "\n" . '<html><head><meta charset="UTF-8"></head>'
             . '<body><article class="b-article"><div class="e-date">12.12.2017</div>'
             . '<div class="e-date">12.11.2016</div>'
             . '<div class="e-date">12.10.2016</div></article></body></html>' . "\n",
