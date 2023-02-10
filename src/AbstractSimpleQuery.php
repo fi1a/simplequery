@@ -84,7 +84,9 @@ abstract class AbstractSimpleQuery implements SimpleQueryInterface
         }
         $this->setDomDocument(new DOMDocument('1.0', $this->getEncoding()));
         if (is_null($document) || !$document) {
-            $document = '<!DOCTYPE html><html><head></head><body></body></html>';
+            $document = '<!DOCTYPE html><html><head><meta charset="'
+                . $this->getEncoding()
+                . '"></head><body></body></html>';
         }
         libxml_use_internal_errors(true);
         $dom = $this->getDomDocument();
