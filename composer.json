@@ -27,7 +27,8 @@
     "phpunit/phpunit": "^9.3",
     "slevomat/coding-standard": "^6.3",
     "squizlabs/php_codesniffer": "^3.5",
-    "captainhook/captainhook": "^5.4"
+    "captainhook/captainhook": "^5.4",
+    "ext-iconv": "*"
   },
   "config": {
     "sort-packages": true,
